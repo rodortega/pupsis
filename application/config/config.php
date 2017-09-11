@@ -55,7 +55,11 @@ define('URL_PROTOCOL', '//');
 define('URL_DOMAIN', $_SERVER['HTTP_HOST']);
 define('URL_SUB_FOLDER', str_replace(URL_PUBLIC_FOLDER, '', dirname($_SERVER['SCRIPT_NAME'])));
 define('URL', URL_PROTOCOL . URL_DOMAIN . URL_SUB_FOLDER);
+
 define('VERSION', '0.1');
+define('TITLE', 'PUP SIS :: ');
+define('THEME', 'public/theme/');
+define('APPJS', 'public/app/');
 
 date_default_timezone_set("Asia/Manila");
 
@@ -65,7 +69,7 @@ date_default_timezone_set("Asia/Manila");
  */
 define('DB_TYPE', 'mysql');
 define('DB_HOST', '127.0.0.1');
-define('DB_NAME', '');
+define('DB_NAME', 'pupsis');
 define('DB_USER', 'root');
 define('DB_PASS', '');
 define('DB_CHARSET', 'utf8');
