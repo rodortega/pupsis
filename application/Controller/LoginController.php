@@ -29,10 +29,6 @@ class LoginController
 			case "registrar":
 				$login = $User->registrar($_POST);
 				break;
-
-			case "admin":
-				$login = $User->admin($_POST);
-				break;
 		}
 
 		if (!empty($login))

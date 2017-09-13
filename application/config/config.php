@@ -58,8 +58,8 @@ define('URL', URL_PROTOCOL . URL_DOMAIN . URL_SUB_FOLDER);
 
 define('VERSION', '0.1');
 define('TITLE', 'PUP SIS :: ');
-define('THEME', 'public/theme/');
-define('APPJS', 'public/app/');
+define('THEME', URL . 'theme/');
+define('APPJS', URL . 'app/');
 
 date_default_timezone_set("Asia/Manila");
 

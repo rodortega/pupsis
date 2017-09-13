@@ -1,8 +1,7 @@
-						<div class="footer text-muted text-center">
+					<div class="footer text-muted text-center">
 						&copy; 2017. <a href="<?php echo URL?>">PUP SIS</a>
 					</div>
 					<!-- /footer -->
-
 				</div>
 				<!-- /content area -->
 
@@ -14,6 +13,5 @@
 
 	</div>
 	<!-- /page container -->
-
 </body>
 </html>

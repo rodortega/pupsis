@@ -6,6 +6,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title><?php echo TITLE . $page_title ?></title>
 
+	<link rel="shortcut icon" type="image/x-icon" href="<?php echo URL?>favicon.ico">
+
 	<!-- Global stylesheets -->
 	<link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
 	<link href="<?php echo THEME;?>css/icons/icomoon/styles.css" rel="stylesheet" type="text/css">
@@ -26,7 +28,6 @@
 	<!-- Theme JS files -->
 	<script type="text/javascript" src="<?php echo THEME;?>js/core/app.js"></script>
 	<!-- /theme JS files -->
-
 </head>
 
 <body class="login-container">

@@ -29,16 +29,45 @@ class User extends Model
 
 	public function professor()
 	{
+		$sql = "
+		SELECT user_code,status
+		FROM professors
+		WHERE
+			user_code = :user_code
+		AND birthdate = :birthdate
+		AND password = :password";
 
+        $param = array(
+            ':user_code' => $login['user_code'],
+            ':birthdate' => $login['birthdate'],
+            ':password' => $login['password']
+        );
+
+        $query = $this->db->prepare($sql);
+        $query->execute($param);
+
+        return $query->fetch();
 	}
 
 	public function registrar()
 	{
+		$sql = "
+		SELECT user_code,status
+		FROM registrars
+		WHERE
+			user_code = :user_code
+		AND birthdate = :birthdate
+		AND password = :password";
 
-	}
+        $param = array(
+            ':user_code' => $login['user_code'],
+            ':birthdate' => $login['birthdate'],
+            ':password' => $login['password']
+        );
 
-	public function admin()
-	{
+        $query = $this->db->prepare($sql);
+        $query->execute($param);
 
+        return $query->fetch();
 	}
 }

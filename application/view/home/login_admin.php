@@ -1,5 +1,4 @@
-<!-- Simple login form -->
-<form action="<?php echo URL?>login/type/admin">
+<form action="<?php echo URL?>admin/login" id="login_form">
 	<div class="panel panel-body login-form">
 		<div class="text-center">
 			<div class="login-logo"><img src="<?php echo THEME?>images/PUPLogo.png"></div>
@@ -25,3 +24,5 @@
 		</div>
 	</div>
 </form>
+
+<script type="text/javascript" src="<?php echo APPJS?>home/login_admin.js?v=<?php echo VERSION?>"></script>
