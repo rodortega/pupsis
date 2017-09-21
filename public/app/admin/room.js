@@ -7,8 +7,8 @@ $(function(){
         $("#table_data").html('');
 
         $('html').block({
-            message: '<i class="icon-spinner2 spinner"></i><br> Please wait ..',
-            overlayCSS: {backgroundColor:'#fff',opacity:0.8,cursor:'wait'},
+            message: '<span class="text-white"><i class="icon-spinner10 spinner"></i> Loading data..</span>',
+            overlayCSS: {backgroundColor:'#000',opacity:0.8},
             css: {border:0,padding:0,backgroundColor:'none'}
         });
 

@@ -1,6 +1,8 @@
 <?php
 namespace Mini\Controller;
 
+use Mini\Controller\Test;
+
 class HomeController
 {
 	public function index()

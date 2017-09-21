@@ -1,14 +1,10 @@
-$(function() {
-	$(".menu_school_add").addClass("active");
-});
-
 $(document).ready(function(){
 
     $('#add_school_form').submit(function(event){
 
         $('html').block({
-            message: '<i class="icon-spinner2 spinner"></i><br> Logging in ..',
-            overlayCSS: {backgroundColor:'#fff',opacity:0.8,cursor:'wait'},
+            message: '<span class="text-white"><i class="icon-spinner10 spinner"></i> Adding School/span>',
+            overlayCSS: {backgroundColor:'#000',opacity:0.8},
             css: {border:0,padding:0,backgroundColor:'none'}
         });
 

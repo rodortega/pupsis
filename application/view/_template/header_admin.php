@@ -9,7 +9,7 @@
 	<link rel="shortcut icon" type="image/x-icon" href="<?php echo URL?>favicon.ico">
 
 	<!-- Global stylesheets -->
-	<link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
+	<link href="<?php echo THEME?>fonts/roboto.css" rel="stylesheet" type="text/css">
 	<link href="<?php echo THEME;?>css/icons/icomoon/styles.css" rel="stylesheet" type="text/css">
 	<link href="<?php echo THEME;?>css/bootstrap.css" rel="stylesheet" type="text/css">
 	<link href="<?php echo THEME;?>css/core.css" rel="stylesheet" type="text/css">
@@ -32,6 +32,7 @@
 	<script type="text/javascript" src="<?php echo THEME;?>js/plugins/forms/editable/editable.min.js"></script>
 	<script type="text/javascript" src="<?php echo THEME;?>js/plugins/notifications/pnotify.min.js"></script>
 	<script type="text/javascript" src="<?php echo THEME;?>js/plugins/notifications/sweet_alert.min.js"></script>
+	<script type="text/javascript" src="<?php echo THEME;?>js/plugins/forms/inputs/formatter.min.js"></script>
 
 	<script type="text/javascript" src="<?php echo THEME;?>js/core/app.js"></script>
 	<!-- /theme JS files -->
@@ -91,6 +92,7 @@
 
                                 <li class="menu_room"><a href="<?php echo URL?>admin/room"><i class="icon-home8"></i> <span>Rooms</span></a></li>
                                 <li class="menu_course"><a href="<?php echo URL?>admin/course"><i class="icon-road"></i> <span>Courses</span></a></li>
+                                <li class="menu_subject"><a href="<?php echo URL?>admin/subject"><i class="icon-book"></i> <span>Subjects</span></a></li>
 							</ul>
 						</div>
 					</div>

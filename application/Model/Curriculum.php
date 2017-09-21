@@ -8,9 +8,11 @@ class Curriculum extends Model
 	public function getCurriculumsBySchoolId($school_id)
 	{
 		$sql = "
-		SELECT *
+		SELECT curriculums.*, courses.code, courses.name
 		FROM curriculums
-		WHERE school_id = :school_id";
+		LEFT JOIN courses
+		ON courses.id = curriculums.course_id
+		WHERE curriculums.school_id = :school_id";
 
 		$param = array(
             ':school_id' => $school_id
@@ -25,13 +27,12 @@ class Curriculum extends Model
 	public function addCurriculum(array $data)
 	{
 		$sql = "
-		INSERT INTO curriculums (school_id,code,name)
-		VALUES (:school_id,:code,:name)";
+		INSERT INTO curriculums (school_id,course_id)
+		VALUES (:school_id,:course_id)";
 
         $param = array(
             ':school_id' => $data['school_id'],
-            ':code' => $data['code'],
-            ':name' => $data['name']
+            ':course_id' => $data['course_id']
         );
 
         $query = $this->db->prepare($sql);

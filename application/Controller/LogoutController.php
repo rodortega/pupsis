@@ -10,4 +10,12 @@ class LogoutController
 
 		header("location: " . URL . "admin");
 	}
+
+	public function registrar()
+	{
+		session_start();
+		session_destroy();
+
+		header("location: " . URL . "registrar");
+	}
 }

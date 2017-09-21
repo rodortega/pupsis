@@ -3,7 +3,7 @@ namespace Mini\Model;
 
 use Mini\Core\Model;
 
-class Registrar extends Model
+class Professor extends Model
 {
 	public function getProfessorsBySchoolId($school_id)
 	{
@@ -17,7 +17,7 @@ class Registrar extends Model
 		);
 
         $query = $this->db->prepare($sql);
-        $query->execute();
+        $query->execute($param);
 
         return $query->fetchAll();
 	}

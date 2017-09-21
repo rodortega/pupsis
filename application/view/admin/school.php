@@ -4,11 +4,12 @@
 			<h5 class="panel-title">School Branches</h5>
 		</div>
 
-		<table class="table datatable-basic">
+		<table class="table">
 			<thead>
 				<tr>
 					<th>Name</th>
 					<th>Description</th>
+					<th>Actions</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -17,6 +18,18 @@
 				<tr>
 					<td><a href="#" class="editable_school" id="name" data-type="text" data-pk="<?php echo $school->id;?>" data-inputclass="form-control" data-placeholder="Edit School Name" data-title="Edit School Branch"><?php echo $school->name;?></a></td>
 					<td><a href="#" class="editable_school" id="description" data-type="textarea" data-pk="<?php echo $school->id;?>" data-inputclass="form-control" data-placeholder="Edit Description" data-title="Edit Description"><?php echo $school->description;?></a></td>
+					<td>
+						<div class="btn-group">
+	                    	<button type="button" class="btn btn-primary btn-xs btn-icon dropdown-toggle" data-toggle="dropdown">
+		                    	<i class="icon-menu7"></i> &nbsp;<span class="caret"></span>
+	                    	</button>
+
+	                    	<ul class="dropdown-menu dropdown-menu-right">
+								<li><a href="<?php echo URL?>admin/school_subjects/<?php echo $school->id?>"><i class="icon-book"></i> Subjects</a></li>
+								<li><a href="<?php echo URL?>school/delete/<?php echo $school->id?>"><i class="icon-trash"></i> Delete</a></li>
+							</ul>
+						</div>
+					</td>
 				</tr>
 				<?php
 				}

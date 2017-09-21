@@ -7,12 +7,32 @@ use Mini\Libs\JSON;
 
 class CourseController
 {
-	public function search()
+	public function add()
 	{
 		$Course = new Course();
-		$courses = $Course->getRoomsBySchoolId($_POST['school_id']);
+		$courses = $Course->addCourse($_POST);
+
+		if ($courses > 0)
+		{
+			$status = "success";
+		}
+		else
+		{
+			$status = "error";
+		}
+
+		$data = array
+		(
+			"status" => $status
+		);
 
 		$JSON = new JSON();
-		$JSON->send($courses);
+		$JSON->send($data);
+	}
+
+	public function edit()
+	{
+		$Course = new Course();
+		$courses = $Course->updateCourse($_POST);
 	}
 }

@@ -36,7 +36,11 @@ class LoginController
 			if ($login->status == "1")
 			{
 				session_start();
+				$_SESSION["id"] = $login->id;
 				$_SESSION["user_code"] = $login->user_code;
+				$_SESSION["firstname"] = $login->firstname;
+				$_SESSION["school_id"] = $login->school_id;
+				$_SESSION["type"] = $type;
 
 				$data = array(
 					"status"  		=> "success",

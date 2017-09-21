@@ -12,8 +12,8 @@ $(document).ready(function(){
     $('#login_form').submit(function(event){
 
     	$('html').block({
-            message: '<i class="icon-spinner2 spinner"></i><br> Logging in ..',
-            overlayCSS: {backgroundColor:'#fff',opacity:0.8,cursor:'wait'},
+            message: '<span class="text-white"><i class="icon-spinner10 spinner"></i> Logging in..</span>',
+            overlayCSS: {backgroundColor:'#000',opacity:0.8},
             css: {border:0,padding:0,backgroundColor:'none'}
         });
 
@@ -26,7 +26,7 @@ $(document).ready(function(){
 	        {
 	        	if (response.status == "success")
 	        	{
-	        		window.location.href = "dashboard";
+	        		window.location.href = url + "student/dashboard";
 	        	}
 	        	else
 	        	{

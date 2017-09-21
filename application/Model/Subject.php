@@ -21,12 +21,12 @@ class Subject extends Model
 	{
 		$sql = "
 		INSERT INTO subjects
-		(code,description)
-		VALUES (:code,:description)";
+		(code,name)
+		VALUES (:code,:name)";
 
 		$param =array(
 			":code" => $data['code'],
-			":description" => $data['description']
+			":name" => $data['name']
 		);
 
         $query = $this->db->prepare($sql);
@@ -49,5 +49,19 @@ class Subject extends Model
 
         $query = $this->db->prepare($sql);
         $query->execute($param);
+	}
+
+	public function deleteSubject($id)
+	{
+		$sql = "
+		DELETE FROM subjects
+		WHERE id = :id";
+
+		$param = array(
+			":id" => $id
+		);
+
+        $query = $this->db->prepare($sql);
+        return $query->execute($param);
 	}
 }

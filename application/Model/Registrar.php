@@ -5,6 +5,24 @@ use Mini\Core\Model;
 
 class Registrar extends Model
 {
+	public function getProfileById($id)
+	{
+		$sql = "
+		SELECT *
+		FROM registrars
+		WHERE
+			id = :id";
+
+        $param = array(
+            ':id' => $id
+        );
+
+        $query = $this->db->prepare($sql);
+        $query->execute($param);
+
+        return $query->fetch();
+	}
+
 	public function getAllRegistrars()
 	{
 		$sql = "

@@ -8,7 +8,7 @@ class User extends Model
 	public function student(array $login)
 	{
 		$sql = "
-		SELECT user_code,status
+		SELECT *
 		FROM students
 		WHERE
 			user_code = :user_code
@@ -27,10 +27,10 @@ class User extends Model
         return $query->fetch();
 	}
 
-	public function professor()
+	public function professor(array $login)
 	{
 		$sql = "
-		SELECT user_code,status
+		SELECT *
 		FROM professors
 		WHERE
 			user_code = :user_code
@@ -49,10 +49,10 @@ class User extends Model
         return $query->fetch();
 	}
 
-	public function registrar()
+	public function registrar(array $login)
 	{
 		$sql = "
-		SELECT user_code,status
+		SELECT *
 		FROM registrars
 		WHERE
 			user_code = :user_code

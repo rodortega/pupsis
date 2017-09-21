@@ -4,8 +4,8 @@ $(document).ready(function(){
     $('#registrar_form').submit(function(event){
 
     	$('html').block({
-            message: '<i class="icon-spinner2 spinner"></i><br><br> Saving info ..',
-            overlayCSS: {backgroundColor:'#fff',opacity:0.8,cursor:'wait'},
+            message: '<span class="text-white"><i class="icon-spinner10 spinner"></i> Adding registrar ..</span>',
+            overlayCSS: {backgroundColor:'#000',opacity:0.8},
             css: {border:0,padding:0,backgroundColor:'none'}
         });
 

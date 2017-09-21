@@ -35,4 +35,10 @@ class SchoolController
 		$School = new School();
 		$schools = $School->updateSchool($_POST);
 	}
+
+	public function delete()
+	{
+		$School = new School();
+		$School->deleteSchool($id);
+	}
 }

@@ -4,6 +4,8 @@ namespace Mini\Controller;
 use Mini\Model\Admin;
 use Mini\Model\School;
 use Mini\Model\Registrar;
+use Mini\Model\Course;
+use Mini\Model\Subject;
 
 use Mini\Libs\JSON;
 
@@ -29,6 +31,7 @@ class AdminController
 			{
 				session_start();
 				$_SESSION["id"] = $admins->id;
+				$_SESSION["type"] = "admin";
 				$_SESSION["firstname"] = $admins->firstname;
 
 				$data = array(
@@ -154,6 +157,34 @@ class AdminController
 
 		require VIEW . '_template/header_admin.php';
 		require VIEW . 'admin/room.php';
+		require VIEW . '_template/footer.php';
+	}
+
+	public function course()
+	{
+		require VIEW . 'admin/session.php';
+
+		$page_title = "Courses";
+
+		$Course = new Course();
+		$courses = $Course->getAllCourses();
+
+		require VIEW . '_template/header_admin.php';
+		require VIEW . 'admin/course.php';
+		require VIEW . '_template/footer.php';
+	}
+
+	public function subject()
+	{
+		require VIEW . 'admin/session.php';
+
+		$page_title = "Subjects";
+
+		$Subject = new Subject();
+		$subjects = $Subject->getAllSubjects();
+
+		require VIEW . '_template/header_admin.php';
+		require VIEW . 'admin/subject.php';
 		require VIEW . '_template/footer.php';
 	}
 }

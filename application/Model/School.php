@@ -50,4 +50,18 @@ class School extends Model
         $query = $this->db->prepare($sql);
         $query->execute($param);
 	}
+
+	public function deleteSchool($id)
+	{
+		$sql = "
+		DELETE FROM schools
+		WHERE id = :id";
+
+		$param =array(
+			":id" => $data['pk']
+		);
+
+        $query = $this->db->prepare($sql);
+        return $query->execute($param);
+	}
 }
