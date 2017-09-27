@@ -5,6 +5,22 @@ use Mini\Core\Model;
 
 class Subject extends Model
 {
+	public function getSubjectById($id)
+	{
+		$sql = "
+		SELECT *
+		FROM subjects
+		WHERE id = :id";
+
+        $param =array(
+			":id" => $id
+		);
+
+        $query = $this->db->prepare($sql);
+        $query->execute($param);
+
+        return $query->fetch();
+	}
 	public function getAllSubjects()
 	{
 		$sql = "

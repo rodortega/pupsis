@@ -24,7 +24,7 @@ $(function(){
 
 	        		for (i = 0; i < response.message.length; i++)
 	        		{
-	        			j +='<tr>' +
+	        			j +='<tr id="class_'+response.message[i].id+'">' +
 	        					'<td>' + response.message[i].subject_code + '</td>' +
 	        					'<td>' + response.message[i].firstname + ' ' + response.message[i].lastname + '</td>' +
 	        					'<td>' + response.message[i].lec_count + '</td>' +
@@ -32,9 +32,9 @@ $(function(){
 	        					'<td>' + response.message[i].units + '</td>' +
 	        					'<td>' + response.message[i].time_start + ' - ' + response.message[i].time_end +
 	        					'<td>' + response.message[i].room_name + '</td>' +
+	        					'<td>' + '<button class="btn btn-xs btn-danger" id="'+response.message[i].id+'" onClick="promptDelete(this.id)"><i class="icon-trash position-left"></i> Delete</button>' + '</td>' +
 	        				'</tr>';
 	        		}
-	        		//console.log(j);
 	        		$("#data_schedule").append(j);
 	        	}
 	        	else
@@ -62,3 +62,66 @@ $(function(){
     	event.preventDefault();
 	});
 });
+
+function promptDelete(class_id){
+
+    swal({
+        title: "Are you sure?",
+        text: "This will be permanently deleted.",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#EF5350",
+        confirmButtonText: "Delete",
+        cancelButtonText: "Cancel",
+        closeOnConfirm: true,
+        closeOnCancel: true
+    },
+
+    function(isConfirm){
+        if (isConfirm)
+        {
+            deleteClass(class_id);
+        }
+    });
+}
+
+function deleteClass(class_id){
+    $.ajax({
+        url: url + "class/delete",
+        type: 'POST',
+        data: {"id": class_id},
+
+        success: function(response)
+        {
+            if (response.status == 'success')
+            {
+                swal({
+                    title: "Deleted!",
+                    text: "The curriculum has been deleted",
+                    confirmButtonColor: "#66BB6A",
+                    type: "success"
+                });
+
+                $("#class_" + class_id).remove();
+            }
+            else
+            {
+                swal({
+                    title: "Error!",
+                    text: "The curriculum is still in use",
+                    confirmButtonColor: "#66BB6A",
+                    type: "error"
+                });
+            }
+
+        },
+        error: function()
+        {
+            new PNotify({
+                title: 'Server Error',
+                text: 'Please contact your administrator',
+                addclass: 'bg-danger'
+            });
+        }
+    });
+}

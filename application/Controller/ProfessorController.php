@@ -16,9 +16,26 @@ class ProfessorController
 		require VIEW . '_template/footer.php';
 	}
 
-	public function search()
+	public function dashboard()
 	{
+		require VIEW . 'professor/session.php';
 
+		$page_title = "Dashboard";
+
+		require VIEW . '_template/header_professor.php';
+		require VIEW . 'professor/dashboard.php';
+		require VIEW . '_template/footer.php';
+	}
+
+	public function schedule()
+	{
+		require VIEW . 'professor/session.php';
+
+		$page_title = "Schedule";
+
+		require VIEW . '_template/header_professor.php';
+		require VIEW . 'professor/schedule.php';
+		require VIEW . '_template/footer.php';
 	}
 
 	public function add()
@@ -64,10 +81,5 @@ class ProfessorController
 
 		$JSON = new JSON();
 		$JSON->send($data);
-	}
-
-	public function delete()
-	{
-
 	}
 }

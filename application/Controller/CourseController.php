@@ -35,4 +35,24 @@ class CourseController
 		$Course = new Course();
 		$courses = $Course->updateCourse($_POST);
 	}
+
+	public function delete()
+	{
+		$Course = new Course();
+		$courses = $Course->deleteCourse($_POST['id']);
+
+		if ($courses === true)
+		{
+			$status = "success";
+		}
+		else
+		{
+			$status = "error";
+		}
+
+		$data = array("status" => $status);
+
+		$JSON = new JSON();
+		$JSON->send($data);
+	}
 }

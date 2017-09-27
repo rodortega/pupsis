@@ -84,4 +84,24 @@ class ClassController
 			return false;
 		}
 	}
+
+	public function delete()
+	{
+		$Class = new Classer();
+		$classes = $Class->deleteClass($_POST['id']);
+
+		if ($classes === true)
+		{
+			$status = "success";
+		}
+		else
+		{
+			$status = "error";
+		}
+
+		$data = array("status" => $status);
+
+		$JSON = new JSON();
+		$JSON->send($data);
+	}
 }

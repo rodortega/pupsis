@@ -67,6 +67,7 @@
 	<div class="panel panel-flat">
 		<div class="panel-heading">
 			<h5 class="panel-title">Schedule</h5>
+			<p>You can manage the room vacancy and schedule by clicking <a href="<?php echo URL?>registrar/vacancy">here.</a></p>
 			<div class="text-right">
 				<button class="btn btn-primary" data-toggle="modal" data-target="#modal_curriculum_add"><i class="icon-add position-left"></i> ADD SCHEDULE</button>
 			</div>
@@ -83,6 +84,7 @@
 							<th>Units</th>
 							<th>Schedule</th>
 							<th>Room</th>
+							<th>Action</th>
 						</tr>
 					</thead>
 					<tbody id="data_schedule">

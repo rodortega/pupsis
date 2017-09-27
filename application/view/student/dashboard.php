@@ -1,0 +1,1 @@
+<script type="text/javascript" src="<?php echo APPJS?>student/dashboard.js?v=<?php echo VERSION?>"></script>

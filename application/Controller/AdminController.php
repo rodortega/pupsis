@@ -6,6 +6,7 @@ use Mini\Model\School;
 use Mini\Model\Registrar;
 use Mini\Model\Course;
 use Mini\Model\Subject;
+use Mini\Model\Curriculum;
 
 use Mini\Libs\JSON;
 
@@ -95,6 +96,26 @@ class AdminController
 
 		require VIEW . '_template/header_admin.php';
 		require VIEW . 'admin/school_add.php';
+		require VIEW . '_template/footer.php';
+	}
+
+	public function school_courses($id)
+	{
+		require VIEW . 'admin/session.php';
+
+		$page_title = "School Courses";
+
+		$School = new School();
+		$schools = $School->getSchoolById($id);
+
+		$Curriculum = new Curriculum();
+		$curriculums = $Curriculum->getCurriculumsBySchoolId($id);
+
+		$Course = new Course();
+		$courses = $Course->getAllCourses();
+
+		require VIEW . '_template/header_admin.php';
+		require VIEW . 'admin/school_course.php';
 		require VIEW . '_template/footer.php';
 	}
 

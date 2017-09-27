@@ -4,6 +4,7 @@
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 				<h5 class="modal-title">Add Schedule</h5>
+				<p>You can manage the room vacancy and schedule by clicking <a href="<?php echo URL?>registrar/vacancy">here.</a></p>
 			</div>
 
 
@@ -12,13 +13,13 @@
 
 					<div class="col-lg-4">
 						<div class="form-group">
-							<label class="control-label col-lg-4">Course</label>
+							<label class="control-label col-lg-4">Semester</label>
 							<div class="col-lg-8">
-								<select class="form-control" name="curriculum_id" required>
-									<option value="">Select Course ..</option>
+								<select class="form-control" name="semester_id" required>
+									<option value="">Select Semester ..</option>
 									<?php
-									foreach ($curriculums as $curriculum) { ?>
-									<option value="<?php echo $curriculum->id?>"><?php echo $curriculum->code;?></option>
+									foreach ($semesters as $semester) { ?>
+									<option value="<?php echo $semester->id?>"><?php echo $semester->name;?></option>
 									<?php } ?>
 								</select>
 							</div>
@@ -27,20 +28,20 @@
 
 					<div class="col-lg-8">
 						<div class="form-group">
-							<label class="control-label col-lg-2">Subject</label>
+							<label class="control-label col-lg-2">Course</label>
 							<div class="col-lg-10">
 								<select class="form-control" name="curriculum_id" required>
 									<option value="">Select Course ..</option>
 									<?php
 									foreach ($curriculums as $curriculum) { ?>
-									<option value="<?php echo $curriculum->id?>"><?php echo $curriculum->code;?></option>
+									<option value="<?php echo $curriculum->id?>"><?php echo '[ '.$curriculum->code .' ] '. $curriculum->name;?></option>
 									<?php } ?>
 								</select>
 							</div>
 						</div>
 					</div>
 
-					<div class="col-lg-4">
+					<div class="col-lg-2">
 						<div class="form-group">
 							<label class="control-label col-lg-4">Year</label>
 							<div class="col-lg-8">
@@ -49,11 +50,25 @@
 						</div>
 					</div>
 
-					<div class="col-lg-4">
+					<div class="col-lg-2">
 						<div class="form-group">
 							<label class="control-label col-lg-4">Section</label>
 							<div class="col-lg-8">
-								<input type="number" class="form-control" min="1" max="6" name="section" required>
+								<input type="number" class="form-control" min="" max="6" name="section" required>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-lg-8">
+						<div class="form-group">
+							<label class="control-label col-lg-2">Subject</label>
+							<div class="col-lg-10">
+								<select class="form-control" name="subject_id" required>
+									<option value="">Select Subject ..</option>
+									<?php foreach ($subjects as $subject) { ?>
+									<option value="<?php echo $subject->id?>"><?php echo $subject->name?></option>
+									<?php } ?>
+								</select>
 							</div>
 						</div>
 					</div>
@@ -92,7 +107,7 @@
 						<div class="form-group">
 							<label class="control-label col-lg-4">Lecture</label>
 							<div class="col-lg-8">
-								<input type="number" class="form-control" min="1" max="6" name="lec_count" required>
+								<input type="number" class="form-control" min="0" max="6" value="0" name="lec_count" required>
 							</div>
 						</div>
 					</div>
@@ -101,7 +116,7 @@
 						<div class="form-group">
 							<label class="control-label col-lg-4">Laboratory</label>
 							<div class="col-lg-8">
-								<input type="number" class="form-control" min="1" max="6" name="lab_count" required>
+								<input type="number" class="form-control" min="0" max="6" value="0" name="lab_count" required>
 							</div>
 						</div>
 					</div>
@@ -110,7 +125,7 @@
 						<div class="form-group">
 							<label class="control-label col-lg-4">Units</label>
 							<div class="col-lg-8">
-								<input type="number" class="form-control" min="1" max="5" name="units" required>
+								<input type="number" class="form-control" min="1" max="5" value="0" name="units" required>
 							</div>
 						</div>
 					</div>

@@ -1,18 +1,18 @@
 <?php
 namespace Mini\Controller;
 
-use Mini\Model\Subject;
+use Mini\Model\Curriculum;
 
 use Mini\Libs\JSON;
 
-class SubjectController
+class CurriculumController
 {
 	public function add()
 	{
-		$Subject = new Subject();
-		$subjects = $Subject->addSubject($_POST);
+		$Curriculum = new Curriculum();
+		$curriculums = $Curriculum->addCurriculum($_POST);
 
-		if ($subjects >= 1)
+		if ($curriculums > 0)
 		{
 			$status = "success";
 		}
@@ -30,18 +30,12 @@ class SubjectController
 		$JSON->send($data);
 	}
 
-	public function edit()
-	{
-		$Subject = new Subject();
-		$subjects = $Subject->updateSubject($_POST);
-	}
-
 	public function delete()
 	{
-		$Subject = new Subject();
-		$subjects = $Subject->deleteSubject($_POST['id']);
+		$Curriculum = new Curriculum();
+		$curriculums = $Curriculum->deleteCurriculum($_POST['id']);
 
-		if ($subjects === true)
+		if ($curriculums === true)
 		{
 			$status = "success";
 		}

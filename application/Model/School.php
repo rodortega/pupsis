@@ -5,6 +5,23 @@ use Mini\Core\Model;
 
 class School extends Model
 {
+	public function getSchoolById($id)
+	{
+		$sql = "
+		SELECT *
+		FROM schools
+		WHERE id = :id";
+
+		$param = array(
+			":id" => $id
+		);
+
+		$query = $this->db->prepare($sql);
+        $query->execute($param);
+
+        return $query->fetch();
+	}
+
 	public function getAllSchools()
 	{
 		$sql = "
@@ -58,7 +75,7 @@ class School extends Model
 		WHERE id = :id";
 
 		$param =array(
-			":id" => $data['pk']
+			":id" => $id
 		);
 
         $query = $this->db->prepare($sql);

@@ -9,7 +9,7 @@
 				<th>Name</th>
 				<th>User Code</th>
 				<th>Course</th>
-				<th>Year</th>
+				<th>Year Section</th>
 				<th>Status</th>
 				<th>Action</th>
 			</tr>
@@ -21,7 +21,7 @@
 				<td><?php echo $student->firstname ." ". $student->middlename ." ". $student->lastname?></td>
 				<td><?php echo $student->user_code?></td>
 				<td><?php echo $student->course_code?></td>
-				<td><?php echo date("Y") - $student->join_year?></td>
+				<td> <?php echo date("Y") - $student->join_year + 1?> - <?php echo $student->section?></td>
 				<td>
 					<?php
 					if ($student->status == '1') { ?>

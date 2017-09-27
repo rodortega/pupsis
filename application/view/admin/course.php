@@ -9,14 +9,16 @@
 				<tr>
 					<th>Code</th>
 					<th>Description</th>
+					<th>Action</th>
 				</tr>
 			</thead>
 			<tbody>
 				<?php
 				foreach ($courses as $course) { ?>
-				<tr>
+				<tr id="course_<?php echo $course->id?>">
 					<td><a href="#" class="editable_course" id="code" data-type="text" data-pk="<?php echo $course->id;?>" data-inputclass="form-control" data-placeholder="Edit Course Code" data-title="EditCourse Code"><?php echo $course->code;?></a></td>
 					<td><a href="#" class="editable_course" id="name" data-type="textarea" data-pk="<?php echo $course->id;?>" data-inputclass="form-control" data-placeholder="Edit Name" data-title="Edit Name"><?php echo $course->name;?></a></td>
+					<td><button id="<?php echo $course->id?>" onClick="promptDelete(this.id)" class="btn btn-xs btn-danger"><i class="icon-trash position-left"></i> Delete</button></td>
 				</tr>
 				<?php
 				}
@@ -47,7 +49,7 @@
 					</div>
 				</div>
 				<div class="form-group text-right">
-					<button type="submit" class="btn btn-primary btn-xs"><i class="icon-floppy-disk position-left"></i> Save</button>
+					<button type="submit" class="btn btn-primary"><i class="icon-floppy-disk position-left"></i> Save</button>
 				</div>
 			</form>
 		</div>

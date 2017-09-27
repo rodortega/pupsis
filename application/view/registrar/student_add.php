@@ -173,6 +173,15 @@
 				</div>
 			</div>
 
+			<div class="col-lg-4">
+				<div class="form-group">
+					<label class="control-label col-lg-4">Section</label>
+					<div class="col-lg-8">
+						<input type="number" min="1" max="10" name="section" class="form-control" required value="1">
+					</div>
+				</div>
+			</div>
+
 			<div class="text-right col-lg-12">
 				<button class="btn btn-primary btn-xs" type="submit"><i class="icon-floppy-disk position-left"></i> Save</button>
 			</div>

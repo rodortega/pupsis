@@ -1,5 +1,5 @@
 <!-- Simple login form -->
-<form action="<?php echo URL?>login/type/professor">
+<form action="<?php echo URL?>login/type/professor" id="login_form">
 	<div class="panel panel-body login-form">
 		<div class="text-center">
 			<div class="login-logo"><img src="<?php echo THEME?>images/PUPLogo.png"></div>
@@ -37,4 +37,4 @@
 	</div>
 </form>
 
-<script type="text/javascript" src="<?php echo APPJS?>home/index.js?v=<?php echo VERSION?>"></script>
+<script type="text/javascript" src="<?php echo APPJS?>home/login_professor.js?v=<?php echo VERSION?>"></script>

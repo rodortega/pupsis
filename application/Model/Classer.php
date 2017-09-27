@@ -5,17 +5,37 @@ use Mini\Core\Model;
 
 class Classer extends Model
 {
+	public function getClassesById($id)
+	{
+		$sql = "
+		SELECT *
+		FROM classes
+		WHERE id = :id";
+
+		$param = array(
+            ':id' => $id
+        );
+
+        $query = $this->db->prepare($sql);
+        $query->execute($param);
+
+        return $query->fetch();
+	}
+
 	public function getAllClassesBySet(array $data)
 	{
 		$sql = "
-		SELECT classes.*, professors.firstname, professors.lastname, subjects.code as subject_code, subjects.name as subject_name, rooms.name as room_name
+		SELECT 	classes.id, classes.year, classes.section, classes.units, classes.lec_count, classes.lab_count, classes.week, TIME_FORMAT(classes.time_start, '%h:%i %p') as time_start, TIME_FORMAT(classes.time_end, '%h:%i %p') as time_end,
+		 		professors.firstname, professors.lastname,
+		 		subjects.id as subject_id, subjects.code as subject_code, subjects.name as subject_name,
+		 		rooms.name as room_name
 		FROM classes
-		LEFT JOIN professors
-		ON professors.id = classes.professor_id
-		LEFT JOIN subjects
-		ON subjects.id = classes.subject_id
-		LEFT JOIN rooms
-		ON rooms.id = classes.room_id
+			LEFT JOIN professors
+			ON professors.id = classes.professor_id
+			LEFT JOIN subjects
+			ON subjects.id = classes.subject_id
+			LEFT JOIN rooms
+			ON rooms.id = classes.room_id
 		WHERE classes.curriculum_id = :curriculum_id
 		AND classes.semester_id = :semester_id
 		AND classes.year = :year
@@ -86,5 +106,19 @@ class Classer extends Model
         $query->execute($param);
 
         return $this->db->lastInsertId();
+	}
+
+	public function deleteClass($id)
+	{
+		$sql = "
+		DELETE FROM classes
+		WHERE id = :id";
+
+		$param = array(
+			":id" => $id
+		);
+
+        $query = $this->db->prepare($sql);
+        return $query->execute($param);
 	}
 }

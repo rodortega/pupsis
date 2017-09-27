@@ -9,6 +9,7 @@ use Mini\Model\Curriculum;
 use Mini\Model\Vacancy;
 use Mini\Model\Room;
 use Mini\Model\Semester;
+use Mini\Model\Subject;
 
 use Mini\Libs\JSON;
 
@@ -147,6 +148,9 @@ class RegistrarController
 
 		$Professor = new Professor();
 		$professors = $Professor->getProfessorsBySchoolId($_SESSION['school_id']);
+
+		$Subject = new Subject();
+		$subjects = $Subject->getAllSubjects();
 
 		$Room = new Room();
 		$rooms = $Room->getRoomsBySchoolId($_SESSION['school_id']);

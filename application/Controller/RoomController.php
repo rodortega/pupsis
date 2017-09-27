@@ -49,5 +49,19 @@ class RoomController
 	{
 		$Room = new Room();
 		$rooms = $Room->deleteRoom($_POST['id']);
+
+		if ($rooms === true)
+		{
+			$status = "success";
+		}
+		else
+		{
+			$status = "error";
+		}
+
+		$data = array("status" => $status);
+
+		$JSON = new JSON();
+		$JSON->send($data);
 	}
 }

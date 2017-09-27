@@ -31,3 +31,67 @@ $(function() {
         showbuttons: 'bottom'
     });
 });
+
+
+function promptDelete(course_id){
+
+    swal({
+        title: "Are you sure?",
+        text: "This will be permanently deleted.",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#EF5350",
+        confirmButtonText: "Delete",
+        cancelButtonText: "Cancel",
+        closeOnConfirm: true,
+        closeOnCancel: true
+    },
+
+    function(isConfirm){
+        if (isConfirm)
+        {
+            deleteCourse(course_id);
+        }
+    });
+}
+
+function deleteCourse(course_id){
+    $.ajax({
+        url: url + "course/delete",
+        type: 'POST',
+        data: {"id": course_id},
+
+        success: function(response)
+        {
+            if (response.status == 'success')
+            {
+                swal({
+                    title: "Deleted!",
+                    text: "The room has been deleted",
+                    confirmButtonColor: "#66BB6A",
+                    type: "success"
+                });
+
+                $("#course_" + room_id).remove();
+            }
+            else
+            {
+                swal({
+                    title: "Error!",
+                    text: "The course is still in use",
+                    confirmButtonColor: "#66BB6A",
+                    type: "error"
+                });
+            }
+
+        },
+        error: function()
+        {
+            new PNotify({
+                title: 'Server Error',
+                text: 'Please contact your administrator',
+                addclass: 'bg-danger'
+            });
+        }
+    });
+}

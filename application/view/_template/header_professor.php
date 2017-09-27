@@ -82,24 +82,6 @@
 							<ul class="navigation navigation-main navigation-accordion">
 
 								<li class="menu_dashboard"><a href="<?php echo URL?>registrar/dashboard"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
-
-								<li class="menu_professor menu_professor_add">
-                                    <a href="#"><i class="icon-users4"></i> <span>Professors</span></a>
-                                    <ul>
-                                    	<li class="menu_professor_add"><a href="<?php echo URL?>registrar/professor_add"><span>Add Professor</span></a>
-                                        <li class="menu_professor"><a href="<?php echo URL?>registrar/professor"><span>Manage Professors</span></a>
-                                    </ul>
-                                </li>
-
-                                <li class="menu_student menu_student_add">
-                                    <a href="#"><i class="icon-graduation"></i> <span>Students</span></a>
-                                    <ul>
-                                    	<li class="menu_student_add"><a href="<?php echo URL?>registrar/student_add"><span>Add Student</span></a>
-                                        <li class="menu_student"><a href="<?php echo URL?>registrar/student"><span>Manage Students</span></a>
-                                    </ul>
-                                </li>
-                                <li class="menu_curriculum"><a href="<?php echo URL?>registrar/curriculum"><i class="icon-list"></i> <span>Curriculums</span></a></li>
-								<li class="menu_vacancy"><a href="<?php echo URL?>registrar/vacancy"><i class="icon-calendar"></i> <span>Vacancies</span></a></li>
 							</ul>
 						</div>
 					</div>

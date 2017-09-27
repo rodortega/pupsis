@@ -8,8 +8,10 @@ class User extends Model
 	public function student(array $login)
 	{
 		$sql = "
-		SELECT *
+		SELECT students.*, curriculums.school_id
 		FROM students
+		LEFT JOIN curriculums
+		ON curriculums.id = students.curriculum_id
 		WHERE
 			user_code = :user_code
 		AND birthdate = :birthdate

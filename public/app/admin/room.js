@@ -86,16 +86,29 @@ function deleteRoom(room_id){
         type: 'POST',
         data: {"id": room_id},
 
-        success: function()
+        success: function(response)
         {
-            swal({
-                title: "Deleted!",
-                text: "The room has been deleted",
-                confirmButtonColor: "#66BB6A",
-                type: "success"
-            });
+            if (response.status == 'success')
+            {
+                swal({
+                    title: "Deleted!",
+                    text: "The room has been deleted",
+                    confirmButtonColor: "#66BB6A",
+                    type: "success"
+                });
 
-            $("#room_" + room_id).remove();
+                $("#room_" + room_id).remove();
+            }
+            else
+            {
+                swal({
+                    title: "Error!",
+                    text: "The room is still in use",
+                    confirmButtonColor: "#66BB6A",
+                    type: "error"
+                });
+            }
+
         },
         error: function()
         {

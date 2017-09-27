@@ -39,6 +39,20 @@ class SchoolController
 	public function delete()
 	{
 		$School = new School();
-		$School->deleteSchool($id);
+		$schools = $School->deleteSchool($_POST['id']);
+
+		if ($schools === true)
+		{
+			$status = "success";
+		}
+		else
+		{
+			$status = "error";
+		}
+
+		$data = array("status" => $status);
+
+		$JSON = new JSON();
+		$JSON->send($data);
 	}
 }

@@ -65,6 +65,7 @@ class Student extends Model
 			mobile,
 			birthdate,
 			join_year,
+			section,
 			status)
 		VALUES (
 			:curriculum_id,
@@ -81,6 +82,7 @@ class Student extends Model
 			:mobile,
 			:birthdate,
 			:join_year,
+			:section,
 			:status)";
 
 		$params = array(
@@ -98,6 +100,7 @@ class Student extends Model
 			":user_code" => $data["user_code"],
 			":password" => $data["password"],
 			":join_year" => $data["join_year"],
+			":section" => $data["section"],
 			":status" => $data["status"]
 		);
 
@@ -153,7 +156,26 @@ class Student extends Model
 		DELETE FROM students
 		WHERE id = :id";
 
+		$param = array(
+			":id" => $id
+		);
+
 		$query = $this->db->prepare($sql);
-        return $query->execute($params);
+        return $query->execute($param);
+	}
+
+	public function setEnrolled($id)
+	{
+		$sql = "
+		UPDATE students
+		SET status = '2'
+		WHERE id = :id";
+
+		$param = array(
+			":id" => $id
+		);
+
+		$query = $this->db->prepare($sql);
+        return $query->execute($param);
 	}
 }

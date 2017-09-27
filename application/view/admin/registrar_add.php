@@ -149,7 +149,7 @@
 			</div>
 
 			<div class="text-right col-lg-12">
-				<button class="btn btn-primary btn-xs" type="submit"><i class="icon-floppy-disk position-left"></i> Save</button>
+				<button class="btn btn-primary" type="submit"><i class="icon-floppy-disk position-left"></i> Save</button>
 			</div>
 		</form>
 	</div>

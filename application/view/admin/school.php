@@ -15,7 +15,7 @@
 			<tbody>
 				<?php
 				foreach ($schools as $school) { ?>
-				<tr>
+				<tr id="row_<?php echo $school->id?>">
 					<td><a href="#" class="editable_school" id="name" data-type="text" data-pk="<?php echo $school->id;?>" data-inputclass="form-control" data-placeholder="Edit School Name" data-title="Edit School Branch"><?php echo $school->name;?></a></td>
 					<td><a href="#" class="editable_school" id="description" data-type="textarea" data-pk="<?php echo $school->id;?>" data-inputclass="form-control" data-placeholder="Edit Description" data-title="Edit Description"><?php echo $school->description;?></a></td>
 					<td>
@@ -25,8 +25,9 @@
 	                    	</button>
 
 	                    	<ul class="dropdown-menu dropdown-menu-right">
-								<li><a href="<?php echo URL?>admin/school_subjects/<?php echo $school->id?>"><i class="icon-book"></i> Subjects</a></li>
-								<li><a href="<?php echo URL?>school/delete/<?php echo $school->id?>"><i class="icon-trash"></i> Delete</a></li>
+	                    		<li><a href="<?php echo URL?>admin/school_courses/<?php echo $school->id?>"><i class="icon-road"></i> Courses</a></li>
+								<div class="divider"></div>
+								<li><a id="<?php echo $school->id?>" onClick="promptDelete(this.id)"><i class="icon-trash"></i> Delete</a></li>
 							</ul>
 						</div>
 					</td>
@@ -60,7 +61,7 @@
 					</div>
 				</div>
 				<div class="form-group text-right">
-					<button type="submit" class="btn btn-primary btn-xs"><i class="icon-floppy-disk position-left"></i> Save</button>
+					<button type="submit" class="btn btn-primary"><i class="icon-floppy-disk position-left"></i> Save</button>
 				</div>
 			</form>
 		</div>
@@ -68,5 +69,4 @@
 </div>
 
 <script type="text/javascript" src="<?php echo APPJS?>admin/school_add.js?v=<?php echo VERSION?>"></script>
-
 <script type="text/javascript" src="<?php echo APPJS?>admin/school.js?v=<?php echo VERSION?>"></script>

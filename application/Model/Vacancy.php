@@ -30,6 +30,31 @@ class Vacancy extends Model
         return $query->fetchAll();
 	}
 
+	public function getVacanciesByProfessorId($professor_id)
+	{
+		$sql = "
+		SELECT classes.*, rooms.name, courses.code as course_code, subjects.code as subject_code
+		FROM classes
+		LEFT JOIN rooms
+		ON rooms.id = classes.room_id
+		LEFT JOIN curriculums
+		ON curriculums.id = classes.curriculum_id
+		LEFT JOIN courses
+		ON courses.id = curriculums.course_id
+		LEFT JOIN subjects
+		ON subjects.id = classes.subject_id
+		WHERE classes.professor_id = :professor_id";
+
+		$params = array(
+			":professor_id" => $professor_id
+		);
+
+		$query = $this->db->prepare($sql);
+        $query->execute($params);
+
+        return $query->fetchAll();
+	}
+
 	public function updateVacancy($data)
 	{
 		$sql = "
