@@ -2,6 +2,9 @@
 namespace Mini\Controller;
 
 use Mini\Model\Professor;
+use Mini\Model\Schedule;
+use Mini\Model\System;
+use Mini\Model\Subject;
 
 use Mini\Libs\JSON;
 
@@ -35,6 +38,24 @@ class ProfessorController
 
 		require VIEW . '_template/header_professor.php';
 		require VIEW . 'professor/schedule.php';
+		require VIEW . '_template/footer.php';
+	}
+
+	public function students()
+	{
+		require VIEW . 'professor/session.php';
+
+		$page_title = "Students";
+
+		$System = new System();
+		$systems = $System->getSystem();
+
+		$Subject = new Subject();
+		$subjects = $Subject->getSubjectsByProfessorId($_SESSION['id'],$systems->semester_id);
+
+		require VIEW . '_template/header_professor.php';
+		require VIEW . 'professor/student.php';
+		require VIEW . 'professor/modal_grade.php';
 		require VIEW . '_template/footer.php';
 	}
 

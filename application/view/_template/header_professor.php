@@ -80,8 +80,9 @@
 					<div class="sidebar-category sidebar-category-visible">
 						<div class="category-content no-padding">
 							<ul class="navigation navigation-main navigation-accordion">
-
-								<li class="menu_dashboard"><a href="<?php echo URL?>registrar/dashboard"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
+								<li class="menu_dashboard"><a href="<?php echo URL?>professor/dashboard"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
+								<li class="menu_schedule"><a href="<?php echo URL?>professor/schedule"><i class="icon-calendar"></i> <span>Schedule</span></a></li>
+								<li class="menu_student"><a href="<?php echo URL?>professor/students"><i class="icon-book"></i> <span>Students</span></a></li>
 							</ul>
 						</div>
 					</div>

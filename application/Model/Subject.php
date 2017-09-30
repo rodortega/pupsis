@@ -21,6 +21,28 @@ class Subject extends Model
 
         return $query->fetch();
 	}
+
+	public function getSubjectsByProfessorId($professor_id,$semester_id)
+	{
+		$sql = "
+		SELECT classes.id, subjects.code, subjects.name
+		FROM classes
+		LEFT JOIN subjects
+		ON classes.subject_id = subjects.id
+		WHERE classes.professor_id = :professor_id
+		AND classes.semester_id = :semester_id";
+
+		$param =array(
+			":professor_id" => $professor_id,
+			":semester_id" => $semester_id
+		);
+
+        $query = $this->db->prepare($sql);
+        $query->execute($param);
+
+        return $query->fetchAll();
+	}
+
 	public function getAllSubjects()
 	{
 		$sql = "

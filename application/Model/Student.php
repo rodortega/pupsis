@@ -47,6 +47,26 @@ class Student extends Model
         return $query->fetchAll();
 	}
 
+	public function getStudentsByClassId($class_id)
+	{
+		$sql = "
+		SELECT schedules.id,
+		students.user_code, students.firstname, students.lastname, schedules.mark, schedules.grade, schedules.status
+		FROM schedules
+		LEFT JOIN students
+		ON students.id = schedules.student_id
+		WHERE schedules.class_id = :class_id";
+
+		$param = array(
+			":class_id" => $class_id
+		);
+
+        $query = $this->db->prepare($sql);
+        $query->execute($param);
+
+        return $query->fetchAll();
+	}
+
 	public function addStudent(array $data)
 	{
 		$sql = "

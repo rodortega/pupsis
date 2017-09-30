@@ -103,14 +103,32 @@ class StudentController
 		}
 	}
 
+	public function search()
+	{
+		$System = new System();
+		$systems = $System->getSystem();
+
+		$Student = new Student();
+		$students = $Student->getStudentsByClassId($_POST['class_id']);
+
+		$data = array(
+			"status" => "success",
+			"is_encoding" => $systems->is_encoding,
+			"message" => $students
+		);
+
+		$JSON = new JSON();
+		$JSON->send($data);
+	}
+
 	public function schedule()
 	{
 		require VIEW . 'student/session.php';
 
-		$page_title =
+		$page_title = "Schedule";
 
 		require VIEW . '_template/header_student.php';
-		require VIEW . 'student/enrollment.php';
+		require VIEW . 'student/schedule.php';
 		require VIEW . '_template/footer.php';
 	}
 

@@ -18,4 +18,12 @@ class LogoutController
 
 		header("location: " . URL . "registrar");
 	}
+
+	public function student()
+	{
+		session_start();
+		session_destroy();
+
+		header("location: " . URL);
+	}
 }

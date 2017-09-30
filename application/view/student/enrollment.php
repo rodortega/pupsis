@@ -91,7 +91,7 @@
 				<button type="submit" class="btn btn-primary" id="button_enroll"><i class="icon-enter position-left"></i> Enroll</button>
 				<?php } ?>
 				<?php if ($stud_status == 2) { ?>
-				<a class="btn btn-primary" href="<?php URL?>student/schedule"><i class="icon-arrow-right8 position-left"></i> Go to Schedule</a>
+				<a class="btn btn-primary" href="<?php echo URL?>student/schedule"><i class="icon-arrow-right8 position-left"></i> Go to Schedule</a>
 				<?php } ?>
 			</div>
 		</form>

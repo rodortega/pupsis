@@ -33,7 +33,7 @@ class LoginController
 
 		if (!empty($login))
 		{
-			if ($login->status == "1")
+			if ($login->status == "1" || $login->status == "2")
 			{
 				session_start();
 				$_SESSION["id"] = $login->id;
