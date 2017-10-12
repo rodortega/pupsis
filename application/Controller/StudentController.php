@@ -146,6 +146,16 @@ class StudentController
 		$Schedule = new Schedule();
 		$schedules = $Schedule->getGradesByStudentId($_SESSION['id']);
 
+		# get all available years and semesters
+		foreach ($schedules as $schedule)
+		{
+			$years[] = $schedule->year;
+			$semesters[] = $schedule->semester_id;
+		}
+
+		$years = array_unique($years);
+		$semesters = array_unique($semesters);
+
 		require VIEW . '_template/header_student.php';
 		require VIEW . 'student/grade.php';
 		require VIEW . '_template/footer.php';

@@ -39,7 +39,7 @@ class Schedule extends Model
 	{
 		$sql = "
 		SELECT 	schedules.id, schedules.grade, schedules.mark,
-				classes.subject_id, classes.year, classes.section, classes.units, classes.lec_count, classes.lab_count, classes.week, classes.time_start, classes.time_end,
+				classes.subject_id, classes.year, classes.section, classes.units, classes.lec_count, classes.lab_count, classes.week, classes.time_start, classes.time_end, classes.semester_id,
 		 		professors.firstname, professors.lastname,
 		 		subjects.code as subject_code, subjects.name as subject_name,
 		 		rooms.name as room_name
@@ -52,7 +52,8 @@ class Schedule extends Model
 			ON subjects.id = classes.subject_id
 			LEFT JOIN rooms
 			ON rooms.id = classes.room_id
-			WHERE student_id = :student_id";
+			WHERE student_id = :student_id
+			ORDER BY classes.year DESC, classes.semester_id DESC";
 
         $param = array(
             ':student_id' => $student_id
