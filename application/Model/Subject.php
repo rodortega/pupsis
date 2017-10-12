@@ -55,6 +55,22 @@ class Subject extends Model
         return $query->fetchAll();
 	}
 
+	public function getAllSubjectsWithPrerequisite()
+	{
+		$sql = "
+		SELECT s.id, s.code, s.name, ss.id as pre_id, ss.code as pre_code, ss.name as pre_name
+		FROM subjects s
+		LEFT JOIN prerequisites p
+		ON p.subject_id = s.id
+		LEFT JOIN subjects ss
+		ON ss.id = p.pre_subject_id";
+
+        $query = $this->db->prepare($sql);
+        $query->execute();
+
+        return $query->fetchAll();
+	}
+
 	public function addSubject(array $data)
 	{
 		$sql = "

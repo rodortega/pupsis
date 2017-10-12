@@ -16,4 +16,22 @@ class System extends Model
 
         return $query->fetch();
 	}
+
+	public function updateSystem(array $data)
+	{
+		$sql = "
+		UPDATE system
+		SET semester_id = :semester_id,
+		is_encoding = :is_encoding,
+		is_registration = :is_registration";
+
+		$param =array(
+			":semester_id" => $data['semester_id'],
+			":is_encoding" => $data['is_encoding'],
+			":is_registration" => $data['is_registration']
+		);
+
+        $query = $this->db->prepare($sql);
+        return $query->execute($param);
+	}
 }

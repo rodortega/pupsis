@@ -21,6 +21,7 @@ $(function() {
     // Disable CSS transitions on page load
     $('body').addClass('no-transitions');
 
+    $('select').select2();
 
 
     // ========================================

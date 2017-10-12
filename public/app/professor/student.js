@@ -53,12 +53,16 @@ $(function(){
 	        			{
 	        				status = '<span class="label label-success">PASSED</span>';
 	        			}
+	        			if (status == 0)
+	        			{
+	        				status = '<span class="label label-danger">FAILED</span>';
+	        			}
 
 	        			j +='<tr id="class_'+response.message[i].id+'">' +
 	        					'<td>' + response.message[i].user_code + '</td>' +
 	        					'<td>' + response.message[i].firstname + ' ' + response.message[i].lastname + '</td>' +
-	        					'<td>' + mark + '</td>' +
 	        					'<td>' + grade + '</td>' +
+	        					'<td>' + mark + '</td>' +
 	        					'<td>' + status + '</td>' +
 	        					'<td>' + button + '</td>' +
 	        				'</tr>';
@@ -110,8 +114,10 @@ function encodeGrade(id){
 	        	{
 	        		$("#modal_data").html('');
 
+	        		$("#schedule_id").val(response.message.id);
 	        		var j = '<br><h5>'+response.message.firstname+ ' ' +response.message.middlename+ ' '+response.message.lastname+'</h5>';
 	        		j += '<p><b>'+response.message.code+'</b> '+response.message.name+'</p>';
+	        		$("#select_grade").val(response.message.grade);
 
 	        		$("#modal_data").prepend(j);
 	        		$("#modal_grade").modal('show');
@@ -140,3 +146,49 @@ function encodeGrade(id){
 	        }
     	});
 }
+
+$(function(){
+
+	$("#schedule_form").submit(function(event){
+
+		$('#modal_grade').block({
+            message: '<span class="text-white"><i class="icon-spinner10 spinner"></i> Checking room availability ..</span>',
+            overlayCSS: {backgroundColor:'#000',opacity:0.8},
+            css: {border:0,padding:0,backgroundColor:'none'}
+        });
+
+        $.ajax({
+	        url: $('#schedule_form').attr('action'),
+	        type: 'POST',
+	        data: $('#schedule_form').serialize(),
+
+	        success: function(response)
+	        {
+	        	if (response.status == "success")
+	        	{
+	        		new PNotify({
+			            title: 'Successful',
+			            text: 'Grade has been encoded.',
+			            addclass: 'bg-success'
+			        });
+
+			        $("#modal_grade").modal('hide');
+			        $("#view_button").trigger('click');
+	        	}
+	        },
+	        error: function()
+	        {
+	        	new PNotify({
+		            title: 'Server Error',
+		            text: 'Please contact your administrator',
+		            addclass: 'bg-danger'
+		        });
+	        },
+	        complete: function()
+	        {
+	        	$('#modal_grade').unblock();
+	        }
+    	});
+    	event.preventDefault();
+	});
+});

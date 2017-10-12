@@ -22,6 +22,7 @@
 	<script type="text/javascript" src="<?php echo THEME;?>js/core/libraries/jquery.min.js"></script>
 	<script type="text/javascript" src="<?php echo THEME;?>js/core/libraries/bootstrap.min.js"></script>
 	<script type="text/javascript" src="<?php echo THEME;?>js/plugins/loaders/blockui.min.js"></script>
+	<script type="text/javascript" src="<?php echo THEME;?>js/plugins/forms/selects/select2.min.js"></script>
 	<!-- /core JS files -->
 
 	<!-- Override CSS files-->
@@ -57,13 +58,13 @@
 
 		<div class="navbar-collapse collapse" id="navbar-mobile">
 			<ul class="nav navbar-nav navbar-right">
-				<li class="dropdown dropdown-user">
+				<li class="dropdown dropdown-user menu_account">
 					<a class="dropdown-toggle" data-toggle="dropdown">
 						<span><?php echo $_SESSION["firstname"];?></span>
 						<i class="caret"></i>
 					</a>
 					<ul class="dropdown-menu dropdown-menu-right">
-						<li><a href="#"><i class="icon-cog5"></i> Account settings</a></li>
+						<li class="menu_account"><a href="<?php echo URL?>admin/accounts"><i class="icon-cog5"></i> Account settings</a></li>
 						<li><a href="<?php echo URL?>logout/admin"><i class="icon-switch2"></i> Logout</a></li>
 					</ul>
 				</li>
@@ -79,7 +80,7 @@
 						<div class="category-content no-padding">
 							<ul class="navigation navigation-main navigation-accordion">
 
-								<li class="menu_dashboard"><a href="<?php echo URL?>admin/dashboard"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
+								<!--<li class="menu_dashboard"><a href="<?php echo URL?>admin/dashboard"><i class="icon-home4"></i> <span>Dashboard</span></a></li>-->
 								<li class="menu_school"><a href="<?php echo URL?>admin/school"><i class="icon-office"></i> <span>Schools</span></a></li>
 
                                 <li class="menu_registrar menu_registrar_add">
@@ -93,6 +94,8 @@
                                 <li class="menu_room"><a href="<?php echo URL?>admin/room"><i class="icon-home8"></i> <span>Rooms</span></a></li>
                                 <li class="menu_course"><a href="<?php echo URL?>admin/course"><i class="icon-road"></i> <span>Courses</span></a></li>
                                 <li class="menu_subject"><a href="<?php echo URL?>admin/subject"><i class="icon-book"></i> <span>Subjects</span></a></li>
+                                <li class="menu_prerequisite"><a href="<?php echo URL?>admin/prerequisite"><i class="icon-exclamation"></i> <span>Prerequisite</span></a></li>
+                                <li class="menu_system"><a href="<?php echo URL?>admin/system"><i class="icon-wrench"></i> <span>System</span></a></li>
 							</ul>
 						</div>
 					</div>

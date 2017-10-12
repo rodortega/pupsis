@@ -147,4 +147,38 @@ class ScheduleController
 		$JSON = new JSON();
 		$JSON->send($data);
 	}
+
+	public function update()
+	{
+		if ($_POST['grade'] >= 1 && $_POST['grade'] <= 3)
+		{
+			$mark = 'P';
+			$status = '2';
+		}
+		elseif ($_POST['grade'] == 'INC')
+		{
+			$mark = 'INC';
+			$status = '1';
+		}
+		elseif ($_POST['grade'] == 'DROP')
+		{
+			$mark = 'DROP';
+			$status = '0';
+		}
+		else
+		{
+			$mark = 'F';
+			$status = '0';
+		}
+
+		$Schedule = new Schedule();
+		$schedules = $Schedule->encodeGrade($_POST['schedule_id'],$_POST['grade'],$mark,$status);
+
+		$data = array(
+			"status" => "success"
+		);
+
+		$JSON = new JSON();
+		$JSON->send($data);
+	}
 }

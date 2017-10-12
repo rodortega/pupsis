@@ -23,8 +23,8 @@
 				<tr>
 					<th>Student ID</th>
 					<th>Name</th>
-					<th>Mark</th>
 					<th>Grade</th>
+					<th>Mark</th>
 					<th>Status</th>
 					<th>Action</th>
 				</tr>

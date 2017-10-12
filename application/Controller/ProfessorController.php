@@ -21,6 +21,7 @@ class ProfessorController
 
 	public function dashboard()
 	{
+		/*
 		require VIEW . 'professor/session.php';
 
 		$page_title = "Dashboard";
@@ -28,6 +29,8 @@ class ProfessorController
 		require VIEW . '_template/header_professor.php';
 		require VIEW . 'professor/dashboard.php';
 		require VIEW . '_template/footer.php';
+		*/
+		header('location:' . URL . 'professor/schedule');
 	}
 
 	public function schedule()
@@ -102,5 +105,19 @@ class ProfessorController
 
 		$JSON = new JSON();
 		$JSON->send($data);
+	}
+
+	public function accounts()
+	{
+		require VIEW . 'professor/session.php';
+
+		$page_title = "Account Settings";
+
+		$Professor = new Professor();
+		$professors = $Professor->getProfessorById($_SESSION['id']);
+
+		require VIEW . '_template/header_professor.php';
+		require VIEW . 'professor/account.php';
+		require VIEW . '_template/footer.php';
 	}
 }

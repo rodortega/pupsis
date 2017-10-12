@@ -26,6 +26,7 @@ class RegistrarController
 
 	public function dashboard()
 	{
+		/*
 		require VIEW . 'registrar/session.php';
 
 		$page_title = "Dashboard";
@@ -36,6 +37,8 @@ class RegistrarController
 		require VIEW . '_template/header_registrar.php';
 		require VIEW . 'registrar/dashboard.php';
 		require VIEW . '_template/footer.php';
+		*/
+		header('location:' . URL . 'registrar/professor');
 	}
 
 	public function professor_add()
@@ -208,5 +211,19 @@ class RegistrarController
 
 		$JSON = new JSON();
 		$JSON->send($data);
+	}
+
+	public function accounts()
+	{
+		require VIEW . 'registrar/session.php';
+
+		$page_title = "Account Settings";
+
+		$Registrar = new Registrar();
+		$registrars = $Registrar->getProfileById($_SESSION['id']);
+
+		require VIEW . '_template/header_registrar.php';
+		require VIEW . 'registrar/account.php';
+		require VIEW . '_template/footer.php';
 	}
 }

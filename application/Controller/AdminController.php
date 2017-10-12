@@ -7,6 +7,8 @@ use Mini\Model\Registrar;
 use Mini\Model\Course;
 use Mini\Model\Subject;
 use Mini\Model\Curriculum;
+use Mini\Model\System;
+use Mini\Model\Semester;
 
 use Mini\Libs\JSON;
 
@@ -61,7 +63,7 @@ class AdminController
 	}
 
 	public function dashboard()
-	{
+	{ /*
 		require VIEW . 'admin/session.php';
 
 		$page_title = "Dashboard";
@@ -72,6 +74,8 @@ class AdminController
 		require VIEW . '_template/header_admin.php';
 		require VIEW . 'admin/dashboard.php';
 		require VIEW . '_template/footer.php';
+		*/
+		header('location:' . URL . 'admin/school');
 	}
 
 	public function school()
@@ -206,6 +210,52 @@ class AdminController
 
 		require VIEW . '_template/header_admin.php';
 		require VIEW . 'admin/subject.php';
+		require VIEW . '_template/footer.php';
+	}
+
+	public function prerequisite()
+	{
+		require VIEW . 'admin/session.php';
+
+		$page_title = "Prerequisites";
+
+		$Subject = new Subject();
+		$subjects = $Subject->getAllSubjectsWithPrerequisite();
+
+		require VIEW . '_template/header_admin.php';
+		require VIEW . 'admin/prerequisite.php';
+		require VIEW . 'admin/modal_prerequisite.php';
+		require VIEW . '_template/footer.php';
+	}
+
+	public function system()
+	{
+		require VIEW . 'admin/session.php';
+
+		$page_title = "Prerequisites";
+
+		$Semester = new Semester();
+		$semesters = $Semester->getAllSemesters();
+
+		$System = new System();
+		$systems = $System->getSystem();
+
+		require VIEW . '_template/header_admin.php';
+		require VIEW . 'admin/system.php';
+		require VIEW . '_template/footer.php';
+	}
+
+	public function accounts()
+	{
+		require VIEW . 'admin/session.php';
+
+		$page_title = "Account Settings";
+
+		$Admin = new Admin();
+		$admins = $Admin->getProfileById($_SESSION['id']);
+
+		require VIEW . '_template/header_admin.php';
+		require VIEW . 'admin/account.php';
 		require VIEW . '_template/footer.php';
 	}
 }

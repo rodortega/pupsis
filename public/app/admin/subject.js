@@ -71,7 +71,7 @@ function deleteSubject(subject_id){
                     type: "success"
                 });
 
-                $("#subject_" + room_id).remove();
+                $("#subject_" + subject_id).remove();
             }
             else
             {

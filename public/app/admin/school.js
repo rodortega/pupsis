@@ -48,7 +48,7 @@ function deleteSchool(school_id){
                     type: "success"
                 });
 
-                $("#school_" + room_id).remove();
+                $("#school_" + school_id).remove();
             }
             else
             {

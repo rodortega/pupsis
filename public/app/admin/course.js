@@ -72,7 +72,7 @@ function deleteCourse(course_id){
                     type: "success"
                 });
 
-                $("#course_" + room_id).remove();
+                $("#course_" + course_id).remove();
             }
             else
             {

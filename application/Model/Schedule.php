@@ -35,6 +35,35 @@ class Schedule extends Model
         return $query->fetchAll();
 	}
 
+	public function getGradesByStudentId($student_id)
+	{
+		$sql = "
+		SELECT 	schedules.id, schedules.grade, schedules.mark,
+				classes.subject_id, classes.year, classes.section, classes.units, classes.lec_count, classes.lab_count, classes.week, classes.time_start, classes.time_end,
+		 		professors.firstname, professors.lastname,
+		 		subjects.code as subject_code, subjects.name as subject_name,
+		 		rooms.name as room_name
+		FROM schedules
+			LEFT JOIN classes
+			ON classes.id = schedules.class_id
+			LEFT JOIN professors
+			ON professors.id = classes.professor_id
+			LEFT JOIN subjects
+			ON subjects.id = classes.subject_id
+			LEFT JOIN rooms
+			ON rooms.id = classes.room_id
+			WHERE student_id = :student_id";
+
+        $param = array(
+            ':student_id' => $student_id
+        );
+
+        $query = $this->db->prepare($sql);
+        $query->execute($param);
+
+        return $query->fetchAll();
+	}
+
 	public function getScheduleByProfessorId($professor_id,$semester_id)
 	{
 		$sql = "
@@ -98,7 +127,7 @@ class Schedule extends Model
 		SELECT
 		students.firstname, students.middlename, students.lastname,
 		subjects.code, subjects.name,
-		schedules.mark, schedules.grade
+		schedules.id, schedules.mark, schedules.grade
 		FROM schedules
 		LEFT JOIN classes
 		ON classes.id = schedules.class_id
@@ -148,6 +177,26 @@ class Schedule extends Model
 		$param = array(
             ':student_id' => $data['student_id'],
             ':class_id' => $data['class_id']
+        );
+
+        $query = $this->db->prepare($sql);
+        return $query->execute($param);
+	}
+
+	public function encodeGrade($schedule_id,$grade,$mark,$status)
+	{
+		$sql = "
+		UPDATE schedules
+		SET grade = :grade,
+		mark = :mark,
+		status = :status
+		WHERE id = :schedule_id";
+
+		$param = array(
+            ':schedule_id' => $schedule_id,
+            ':grade' => $grade,
+            ':mark' => $mark,
+            ':status' => $status,
         );
 
         $query = $this->db->prepare($sql);

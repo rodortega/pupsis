@@ -13,6 +13,7 @@ class StudentController
 {
 	public function dashboard()
 	{
+		/*
 		require VIEW . 'student/session.php';
 
 		$page_title = "Dashboard";
@@ -23,6 +24,8 @@ class StudentController
 		require VIEW . '_template/header_student.php';
 		require VIEW . 'student/dashboard.php';
 		require VIEW . '_template/footer.php';
+		*/
+		header('location:' . URL . 'student/enrollment');
 	}
 
 	public function enrollment()
@@ -80,10 +83,12 @@ class StudentController
 			# get all new subjects
 			$pre_subjects = array();
 			$conflict = array();
+
+			$Prerequisite = new Prerequisite();
+
 			foreach ($classes as $class)
 			{
 				# get all prerequisites
-				$Prerequisite = new Prerequisite();
 				$prerequisites = $Prerequisite->getPrerequisiteBySubjectId($class->subject_id);
 				# if there is a prereq ..
 				if ($prerequisites)
@@ -129,6 +134,20 @@ class StudentController
 
 		require VIEW . '_template/header_student.php';
 		require VIEW . 'student/schedule.php';
+		require VIEW . '_template/footer.php';
+	}
+
+	public function grades()
+	{
+		require VIEW . 'student/session.php';
+
+		$page_title = "Grades";
+
+		$Schedule = new Schedule();
+		$schedules = $Schedule->getGradesByStudentId($_SESSION['id']);
+
+		require VIEW . '_template/header_student.php';
+		require VIEW . 'student/grade.php';
 		require VIEW . '_template/footer.php';
 	}
 
@@ -180,5 +199,19 @@ class StudentController
 	{
 		$Student = new Student();
 		$Student->deleteStudent($id);
+	}
+
+	public function accounts()
+	{
+		require VIEW . 'student/session.php';
+
+		$page_title = "Account Settings";
+
+		$Student = new Student();
+		$students = $Student->getStudentById($_SESSION['id']);
+
+		require VIEW . '_template/header_student.php';
+		require VIEW . 'student/account.php';
+		require VIEW . '_template/footer.php';
 	}
 }

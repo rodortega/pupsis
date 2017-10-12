@@ -22,6 +22,7 @@
 	<script type="text/javascript" src="<?php echo THEME;?>js/core/libraries/jquery.min.js"></script>
 	<script type="text/javascript" src="<?php echo THEME;?>js/core/libraries/bootstrap.min.js"></script>
 	<script type="text/javascript" src="<?php echo THEME;?>js/plugins/loaders/blockui.min.js"></script>
+	<script type="text/javascript" src="<?php echo THEME;?>js/plugins/forms/selects/select2.min.js"></script>
 	<!-- /core JS files -->
 
 	<!-- Override CSS files-->
@@ -59,13 +60,13 @@
 
 		<div class="navbar-collapse collapse" id="navbar-mobile">
 			<ul class="nav navbar-nav navbar-right">
-				<li class="dropdown dropdown-user">
+				<li class="dropdown dropdown-user menu_account">
 					<a class="dropdown-toggle" data-toggle="dropdown">
 						<span><?php echo $_SESSION["firstname"];?></span>
 						<i class="caret"></i>
 					</a>
 					<ul class="dropdown-menu dropdown-menu-right">
-						<li><a href="#"><i class="icon-cog5"></i> Account settings</a></li>
+						<li class="menu_account"><a href="<?php echo URL?>registrar/accounts"><i class="icon-cog5"></i> Account settings</a></li>
 						<li><a href="<?php echo URL?>logout/registrar"><i class="icon-switch2"></i> Logout</a></li>
 					</ul>
 				</li>
@@ -80,8 +81,6 @@
 					<div class="sidebar-category sidebar-category-visible">
 						<div class="category-content no-padding">
 							<ul class="navigation navigation-main navigation-accordion">
-
-								<li class="menu_dashboard"><a href="<?php echo URL?>registrar/dashboard"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
 
 								<li class="menu_professor menu_professor_add">
                                     <a href="#"><i class="icon-users4"></i> <span>Professors</span></a>

@@ -22,6 +22,7 @@
 	<script type="text/javascript" src="<?php echo THEME;?>js/core/libraries/jquery.min.js"></script>
 	<script type="text/javascript" src="<?php echo THEME;?>js/core/libraries/bootstrap.min.js"></script>
 	<script type="text/javascript" src="<?php echo THEME;?>js/plugins/loaders/blockui.min.js"></script>
+	<script type="text/javascript" src="<?php echo THEME;?>js/plugins/forms/selects/select2.min.js"></script>
 	<!-- /core JS files -->
 
 	<!-- Override CSS files-->

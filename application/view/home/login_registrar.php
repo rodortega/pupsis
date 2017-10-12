@@ -30,10 +30,11 @@
 		<div class="form-group">
 			<button type="submit" class="btn btn-primary btn-block">Sign in <i class="icon-circle-right2 position-right"></i></button>
 		</div>
-
+		<!--
 		<div class="text-center">
-			<a href="<?php echo URL?>forgot">Forgot password?</a>
+			<a href="<?php echo URL?>forgot/index/registrar">Forgot password?</a>
 		</div>
+		-->
 	</div>
 </form>
 
