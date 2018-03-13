@@ -54,6 +54,36 @@ class Classer extends Model
         return $query->fetchAll();
 	}
 
+	public function getOtherClassesBySubject($class_id,$subject_id,$semester_id)
+	{
+		$sql = "
+		SELECT 	classes.id, classes.year, classes.section, classes.units, classes.lec_count, classes.lab_count, classes.week, TIME_FORMAT(classes.time_start, '%h:%i %p') as time_start, TIME_FORMAT(classes.time_end, '%h:%i %p') as time_end,
+ 		professors.firstname, professors.lastname,
+ 		subjects.id as subject_id, subjects.code as subject_code, subjects.name as subject_name,
+ 		rooms.name as room_name
+		FROM classes
+			LEFT JOIN professors
+			ON professors.id = classes.professor_id
+			LEFT JOIN subjects
+			ON subjects.id = classes.subject_id
+			LEFT JOIN rooms
+			ON rooms.id = classes.room_id
+		WHERE classes.subject_id = :subject_id
+		AND classes.semester_id = :semester_id
+		AND classes.id != :class_id";
+
+        $param = array(
+        	'class_id' => $class_id,
+            ':subject_id' => $subject_id,
+            ':semester_id' => $semester_id
+        );
+
+        $query = $this->db->prepare($sql);
+        $query->execute($param);
+
+        return $query->fetchAll();
+	}
+
 	public function addClass(array $data)
 	{
 		$sql = "

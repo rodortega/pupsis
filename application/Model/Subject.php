@@ -22,13 +22,34 @@ class Subject extends Model
         return $query->fetch();
 	}
 
+	public function getSubjectIdbyClass($class_id)
+	{
+		$sql = "
+		SELECT subject_id
+		FROM classes
+		WHERE id = :class_id";
+
+		$param =array(
+			":class_id" => $class_id
+		);
+
+        $query = $this->db->prepare($sql);
+        $query->execute($param);
+
+        return $query->fetch();
+	}
+
 	public function getSubjectsByProfessorId($professor_id,$semester_id)
 	{
 		$sql = "
-		SELECT classes.id, subjects.code, subjects.name
+		SELECT classes.id, subjects.code, subjects.name, courses.code as course_code
 		FROM classes
 		LEFT JOIN subjects
 		ON classes.subject_id = subjects.id
+		LEFT JOIN curriculums
+		ON classes.curriculum_id = curriculums.id
+		LEFT JOIN courses
+		ON curriculums.course_id = courses.id
 		WHERE classes.professor_id = :professor_id
 		AND classes.semester_id = :semester_id";
 

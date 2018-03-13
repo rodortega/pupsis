@@ -5,6 +5,8 @@ use Mini\Model\Professor;
 use Mini\Model\Schedule;
 use Mini\Model\System;
 use Mini\Model\Subject;
+use Mini\Model\Reservation;
+use Mini\Model\Room;
 
 use Mini\Libs\JSON;
 
@@ -59,6 +61,24 @@ class ProfessorController
 		require VIEW . '_template/header_professor.php';
 		require VIEW . 'professor/student.php';
 		require VIEW . 'professor/modal_grade.php';
+		require VIEW . '_template/footer.php';
+	}
+
+	public function reservation()
+	{
+		require VIEW . 'professor/session.php';
+
+		$page_title = "Room Reservation";
+
+		$Reservation = new Reservation();
+		$reservations = $Reservation->getActiveReservationsBySchool($_SESSION['school_id']);
+
+		$Room = new Room();
+		$rooms = $Room->getRoomsBySchoolId($_SESSION['school_id']);
+
+		require VIEW . '_template/header_professor.php';
+		require VIEW . 'professor/reservation.php';
+		require VIEW . 'professor/modal_reservation.php';
 		require VIEW . '_template/footer.php';
 	}
 

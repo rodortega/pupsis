@@ -91,7 +91,7 @@
                                     </ul>
                                 </li>
 
-                                <li class="menu_room"><a href="<?php echo URL?>admin/room"><i class="icon-home8"></i> <span>Rooms</span></a></li>
+                                <!-- <li class="menu_room"><a href="<?php echo URL?>admin/room"><i class="icon-home8"></i> <span>Rooms</span></a></li> -->
                                 <li class="menu_course"><a href="<?php echo URL?>admin/course"><i class="icon-road"></i> <span>Courses</span></a></li>
                                 <li class="menu_subject"><a href="<?php echo URL?>admin/subject"><i class="icon-book"></i> <span>Subjects</span></a></li>
                                 <li class="menu_prerequisite"><a href="<?php echo URL?>admin/prerequisite"><i class="icon-exclamation"></i> <span>Prerequisite</span></a></li>

@@ -1,6 +1,6 @@
 <div class="panel panel-flat">
 	<div class="panel-heading">
-		<h5 class="panel-title">Enrollment</h5>
+		<h5 class="panel-title">Grades</h5>
 	</div>
 	<div class="panel-body">
 		<?php foreach ($years as $year) {

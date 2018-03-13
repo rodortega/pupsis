@@ -25,11 +25,19 @@ $(function(){
 	        		window.location.href = url + 'student/schedule';
 	        	}
 
+	        	else if (response.status == "duplicate")
+	        	{
+	        		new PNotify({
+			            title: 'Error',
+			            text: 'You have a duplicate subject in your schedule. Please choose the appropriate schedule and try again.',
+			            addclass: 'bg-danger'
+			        });
+	        	}
 	        	else
 	        	{
 	        		new PNotify({
 			            title: 'Error',
-			            text: 'There might be an error on your input. Please check again.',
+			            text: 'Please contact your administrator',
 			            addclass: 'bg-danger'
 			        });
 	        	}

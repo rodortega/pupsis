@@ -4,6 +4,7 @@ namespace Mini\Controller;
 use Mini\Model\Schedule;
 use Mini\Model\Student;
 use Mini\Model\System;
+use Mini\Model\Subject;
 
 use Mini\Libs\JSON;
 
@@ -13,14 +14,33 @@ class ScheduleController
 	{
 		require VIEW . 'student/session.php';
 
-		$this->addNew($_POST);
-		$this->addExisiting($_POST);
-		$this->setEnrolled();
+		$subject_array = array();
+		$Subject = new Subject();
 
-		$data = array("status" => "success");
+		foreach ($_POST['class_id'] as $class_id)
+		{
+			$subject_id = $Subject->getSubjectIdbyClass($class_id);
+			$subject_array[] = $subject_id->subject_id;
+		}
+		# check if subject has duplicate
+		if (count($subject_array) !== count(array_unique($subject_array)))
+		{
+			$data = array("status" => "duplicate");
 
-		$JSON = new JSON();
-		$JSON->send($data);
+			$JSON = new JSON();
+			$JSON->send($data);
+		}
+		else
+		{
+			$this->addNew($_POST);
+			$this->addExisiting($_POST);
+			$this->setEnrolled();
+
+			$data = array("status" => "success");
+
+			$JSON = new JSON();
+			$JSON->send($data);
+		}
 	}
 
 	# add new subjects to schedule

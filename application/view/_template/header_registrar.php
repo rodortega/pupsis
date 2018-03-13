@@ -82,6 +82,8 @@
 						<div class="category-content no-padding">
 							<ul class="navigation navigation-main navigation-accordion">
 
+								<li class="menu_room"><a href="<?php echo URL?>registrar/rooms"><i class="icon-home8"></i> <span>Rooms</span></a></li>
+
 								<li class="menu_professor menu_professor_add">
                                     <a href="#"><i class="icon-users4"></i> <span>Professors</span></a>
                                     <ul>
@@ -99,6 +101,7 @@
                                 </li>
                                 <li class="menu_curriculum"><a href="<?php echo URL?>registrar/curriculum"><i class="icon-list"></i> <span>Curriculums</span></a></li>
 								<li class="menu_vacancy"><a href="<?php echo URL?>registrar/vacancy"><i class="icon-calendar"></i> <span>Vacancies</span></a></li>
+								<!-- <li class="menu_reservation"><a href="<?php echo URL?>registrar/reservation"><i class="icon-home"></i> <span>Room Reservation</span></a></li> -->
 							</ul>
 						</div>
 					</div>

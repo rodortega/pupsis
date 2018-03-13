@@ -10,6 +10,7 @@ use Mini\Model\Vacancy;
 use Mini\Model\Room;
 use Mini\Model\Semester;
 use Mini\Model\Subject;
+use Mini\Model\Reservation;
 
 use Mini\Libs\JSON;
 
@@ -39,6 +40,20 @@ class RegistrarController
 		require VIEW . '_template/footer.php';
 		*/
 		header('location:' . URL . 'registrar/professor');
+	}
+
+	public function rooms()
+	{
+		require VIEW . 'registrar/session.php';
+
+		$page_title = "Rooms";
+
+		$Room = new Room();
+		$rooms = $Room->getRoomsBySchoolId($_SESSION['school_id']);
+
+		require VIEW . '_template/header_registrar.php';
+		require VIEW . 'registrar/room.php';
+		require VIEW . '_template/footer.php';
 	}
 
 	public function professor_add()
@@ -175,6 +190,20 @@ class RegistrarController
 
 		require VIEW . '_template/header_registrar.php';
 		require VIEW . 'registrar/vacancy.php';
+		require VIEW . '_template/footer.php';
+	}
+
+	public function reservation()
+	{
+		require VIEW . 'registrar/session.php';
+
+		$page_title = "Room Reservation";
+
+		$Reservation = new Reservation();
+		$reservations = $Reservation->getActiveReservationsBySchool($_SESSION['school_id']);
+
+		require VIEW . '_template/header_registrar.php';
+		require VIEW . 'registrar/reservation.php';
 		require VIEW . '_template/footer.php';
 	}
 

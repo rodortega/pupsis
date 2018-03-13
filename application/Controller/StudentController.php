@@ -11,23 +11,6 @@ use Mini\Libs\JSON;
 
 class StudentController
 {
-	public function dashboard()
-	{
-		/*
-		require VIEW . 'student/session.php';
-
-		$page_title = "Dashboard";
-
-		$Student = new Student();
-		$students = $Student->getStudentById($_SESSION['id']);
-
-		require VIEW . '_template/header_student.php';
-		require VIEW . 'student/dashboard.php';
-		require VIEW . '_template/footer.php';
-		*/
-		header('location:' . URL . 'student/enrollment');
-	}
-
 	public function enrollment()
 	{
 		require VIEW . 'student/session.php';
@@ -102,6 +85,12 @@ class StudentController
 				}
 			}
 
+			# get all subjects of different courses and time
+			foreach ($classes as $class)
+			{
+				$class_array[] = $Class->getOtherClassesBySubject($class->id,$class->subject_id,$semester_id);
+			}
+
 			require VIEW . '_template/header_student.php';
 			require VIEW . 'student/enrollment.php';
 			require VIEW . '_template/footer.php';
@@ -121,6 +110,7 @@ class StudentController
 			"is_encoding" => $systems->is_encoding,
 			"message" => $students
 		);
+
 
 		$JSON = new JSON();
 		$JSON->send($data);
@@ -146,19 +136,28 @@ class StudentController
 		$Schedule = new Schedule();
 		$schedules = $Schedule->getGradesByStudentId($_SESSION['id']);
 
-		# get all available years and semesters
-		foreach ($schedules as $schedule)
+		if (empty($schedules))
 		{
-			$years[] = $schedule->year;
-			$semesters[] = $schedule->semester_id;
+			require VIEW . '_template/header_student.php';
+			require VIEW . 'student/no_grade.php';
+			require VIEW . '_template/footer.php';
 		}
+		else
+		{
+			# get all available years and semesters
+			foreach ($schedules as $schedule)
+			{
+				$years[] = $schedule->year;
+				$semesters[] = $schedule->semester_id;
+			}
 
-		$years = array_unique($years);
-		$semesters = array_unique($semesters);
+			$years = array_unique($years);
+			$semesters = array_unique($semesters);
 
-		require VIEW . '_template/header_student.php';
-		require VIEW . 'student/grade.php';
-		require VIEW . '_template/footer.php';
+			require VIEW . '_template/header_student.php';
+			require VIEW . 'student/grade.php';
+			require VIEW . '_template/footer.php';
+		}
 	}
 
 	public function add()

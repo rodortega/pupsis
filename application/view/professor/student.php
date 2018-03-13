@@ -8,7 +8,7 @@
 				<select class="form-control" id="class_id">
 					<?php
 					foreach ($subjects as $subject) { ?>
-					<option value="<?php echo $subject->id?>"><?php echo $subject->name;?></option>
+					<option value="<?php echo $subject->id?>"><?php echo $subject->course_code .' - '.$subject->name;?></option>
 					<?php }
 					?>
 				</select>
