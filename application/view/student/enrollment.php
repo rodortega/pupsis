@@ -66,25 +66,36 @@
 				</thead>
 				<tbody>
 					<?php
-					for ($i = 0; $i < count($class_array); $i++) { ?>
-					<tr>
-						<td>
-							<?php
-							if ($stud_status == 2){}
-							elseif (array_search($class_array[$i][0]->subject_id, $conflict) === false) { ?>
-								<input type="checkbox" class="styled" name="class_id[]" value="<?php echo $class_array[$i][0]->id?>">
-							<?php } else { ?>
-								<i class="icon-x"></i>
-							<?php } ?>
-						</td>
-						<td><?php echo $class_array[$i][0]->subject_code;?></td>
-						<td><?php echo $class_array[$i][0]->subject_name;?></td>
-						<td><?php echo $class_array[$i][0]->firstname.' '.$class_array[$i][0]->lastname;?></td>
-						<td><?php echo $class_array[$i][0]->units;?></td>
-						<td><?php echo $class_array[$i][0]->room_name;?></td>
-						<td><?php echo strtoupper(substr($class_array[$i][0]->week,0,3)) .' ' .$class_array[$i][0]->time_start .' - '. $class_array[$i][0]->time_end?> </td>
-					</tr>
-					<?php }?>
+					if (count($class_array) != 0)
+					{
+						for ($i = 0; $i < count($class_array); $i++)
+						{
+							for ($j = 0; $j < count($class_array[$i]); $j++)
+							{
+								if (!empty($class_array[$i][$j]))
+								{ ?>
+									<tr>
+										<td>
+											<?php
+											if ($stud_status == 2){}
+											elseif (array_search($class_array[$i][$j]->subject_id, $conflict) === false) { ?>
+												<input type="checkbox" class="styled" name="class_id[]" value="<?php echo $class_array[$i][0]->id?>">
+											<?php } else { ?>
+												<i class="icon-x"></i>
+											<?php } ?>
+										</td>
+										<td><?php echo $class_array[$i][$j]->subject_code;?></td>
+										<td><?php echo $class_array[$i][$j]->subject_name;?></td>
+										<td><?php echo $class_array[$i][$j]->firstname.' '.$class_array[$i][$j]->lastname;?></td>
+										<td><?php echo $class_array[$i][$j]->units;?></td>
+										<td><?php echo $class_array[$i][$j]->room_name;?></td>
+										<td><?php echo strtoupper(substr($class_array[$i][$j]->week,0,3)) .' ' .$class_array[$i][$j]->time_start .' - '. $class_array[$i][$j]->time_end?> </td>
+									</tr>
+									<?php
+								}
+							}
+						}
+					} ?>
 				</tbody>
 			</table>
 			<br>
