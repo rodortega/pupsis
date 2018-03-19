@@ -28,11 +28,21 @@ $(function(){
 	        	else if (response.status == "duplicate")
 	        	{
 	        		new PNotify({
-			            title: 'Error',
+			            title: 'Duplicate Error',
 			            text: 'You have a duplicate subject in your schedule. Please choose the appropriate schedule and try again.',
 			            addclass: 'bg-danger'
 			        });
 	        	}
+
+	        	else if (response.status == "conflict")
+	        	{
+	        		new PNotify({
+			            title: 'Conflict Error',
+			            text: 'There is a conflict on your schedule. Either choose a different schedule or skip the subject with conflict schedule.',
+			            addclass: 'bg-danger'
+			        });
+	        	}
+
 	        	else
 	        	{
 	        		new PNotify({

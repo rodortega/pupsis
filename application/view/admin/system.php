@@ -18,6 +18,17 @@
 				</div>
 
 				<div class="form-group">
+					<div class="col-lg-12">
+						<div class="checkbox">
+							<label>
+								<input type="checkbox" class="control-primary" name="is_reset">
+								Set all students as enrollees
+							</label>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group">
 					<label class="control-label col-lg-4">Encoding</label>
 					<div class="col-lg-8">
 						<select class="form-control" name="is_encoding" required>

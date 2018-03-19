@@ -198,4 +198,14 @@ class Student extends Model
 		$query = $this->db->prepare($sql);
         return $query->execute($param);
 	}
+
+	public function removeEnrolled()
+	{
+		$sql = "
+		UPDATE students
+		SET status = '1'";
+
+		$query = $this->db->prepare($sql);
+        return $query->execute();
+	}
 }

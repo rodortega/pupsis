@@ -56,7 +56,7 @@ define('URL_DOMAIN', $_SERVER['HTTP_HOST']);
 define('URL_SUB_FOLDER', str_replace(URL_PUBLIC_FOLDER, '', dirname($_SERVER['SCRIPT_NAME'])));
 define('URL', URL_PROTOCOL . URL_DOMAIN . URL_SUB_FOLDER);
 
-define('VERSION', '0.5');
+define('VERSION', '0.6');
 define('TITLE', 'PUP SIS • ');
 define('THEME', URL . 'theme/');
 define('APPJS', URL . 'app/');

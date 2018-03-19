@@ -96,9 +96,9 @@ class Schedule extends Model
 	{
 		$sql = "
 		SELECT 	schedules.id,
-				classes.subject_id, classes.year, classes.section, classes.units, classes.lec_count, classes.lab_count, classes.week, TIME_FORMAT(classes.time_start, '%h:%i %p') as time_start, TIME_FORMAT(classes.time_end, '%h:%i %p') as time_end,
+				classes.id as class_id, classes.subject_id, classes.year, classes.section, classes.semester_id, classes.units, classes.lec_count, classes.lab_count, classes.week, TIME_FORMAT(classes.time_start, '%h:%i %p') as time_start, TIME_FORMAT(classes.time_end, '%h:%i %p') as time_end,
 		 		professors.firstname, professors.lastname,
-		 		subjects.code as subject_code, subjects.name as subject_name,
+		 		subjects.id as subject_id, subjects.code as subject_code, subjects.name as subject_name,
 		 		rooms.name as room_name
 		FROM schedules
 			LEFT JOIN classes

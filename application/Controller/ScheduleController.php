@@ -5,6 +5,7 @@ use Mini\Model\Schedule;
 use Mini\Model\Student;
 use Mini\Model\System;
 use Mini\Model\Subject;
+use Mini\Model\Classer;
 
 use Mini\Libs\JSON;
 
@@ -32,12 +33,56 @@ class ScheduleController
 		}
 		else
 		{
-			$this->addNew($_POST);
-			$this->addExisiting($_POST);
-			$this->setEnrolled();
+			# check if schedule has no conflict
+			$classes = array();
+			$i = 0;
+			$is_conflict = false;
+			foreach ($_POST['class_id'] as $class_id)
+			{
+				$Class = new Classer();
+				$class = $Class->getClassesById($class_id);
 
-			$data = array("status" => "success");
+				$classes[$i]['week'] = $class->week;
+				$classes[$i]['time_start'] = strtotime($class->time_start);
+				$classes[$i]['time_end'] = strtotime($class->time_end);
+				$i++;
+			}
+			for ($k = 0; $k < count($classes); $k++)
+			{
+				for ($l = $k + 1; $l < count($classes); $l++)
+				{
+					if ($classes[$k]['week'] == $classes[$l]['week'])
+					{
+						if ( ($classes[$k]['time_start'] > $classes[$l]['time_start'] && $classes[$k]['time_start'] < $classes[$l]['time_end']) || ($classes[$k]['time_end'] > $classes[$l]['time_start'] && $classes[$k]['time_end'] < $classes[$l]['time_end']) )
+						{
+							$is_conflict = true;
+							$check = "1";
+						}
+						# if only one minute, make it non-conflict
+						if ( (abs($classes[$k]['time_end'] - $classes[$l]['time_start']) <= 60) || abs($classes[$k]['time_start'] - $classes[$l]['time_end']) <= 60 )
+						{
+							$is_conflict = false;
+						}
+						# if completely identical
+						if ( $classes[$k]['time_start'] == $classes[$l]['time_start'] || $classes[$k]['time_end'] == $classes[$l]['time_end'])
+						{
+							$is_conflict = true;
+						}
+					}
+				}
+			}
+			if ($is_conflict == true)
+			{
+				$data = array("status" => "conflict");
+			}
+			else
+			{
+				$this->addNew($_POST);
+				$this->addExisiting($_POST);
+				$this->setEnrolled();
 
+				$data = array("status" => "success");
+			}
 			$JSON = new JSON();
 			$JSON->send($data);
 		}

@@ -2,7 +2,7 @@
 namespace Mini\Controller;
 
 use Mini\Model\System;
-
+use Mini\Model\Student;
 use Mini\Libs\JSON;
 
 class SystemController
@@ -11,6 +11,12 @@ class SystemController
 	{
 		$System = new System();
 		$systems = $System->updateSystem($_POST);
+
+		if (isset($_POST['is_reset']))
+		{
+			$Student = new Student();
+			$student = $Student->removeEnrolled();
+		}
 
 		if ($systems === true)
 		{

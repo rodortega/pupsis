@@ -21,6 +21,8 @@
 						<th>Subject</th>
 						<th>Description</th>
 						<th>Professor</th>
+						<th>Lec</th>
+						<th>Lab</th>
 						<th>Units</th>
 						<th>Room</th>
 						<th>Schedule</th>
@@ -42,6 +44,8 @@
 						<td><?php echo $class->subject_code;?></td>
 						<td><?php echo $class->subject_name;?></td>
 						<td><?php echo $class->firstname.' '.$class->lastname;?></td>
+						<td><?php echo $class->lec_count;?></td>
+						<td><?php echo $class->lab_count;?></td>
 						<td><?php echo $class->units;?></td>
 						<td><?php echo $class->room_name;?></td>
 						<td><?php echo strtoupper(substr($class->week,0,3)) .' ' .$class->time_start .' - '. $class->time_end?> </td>
@@ -59,6 +63,8 @@
 						<th>Subject</th>
 						<th>Description</th>
 						<th>Professor</th>
+						<th>Lec</th>
+						<th>Lab</th>
 						<th>Units</th>
 						<th>Room</th>
 						<th>Schedule</th>
@@ -87,6 +93,8 @@
 										<td><?php echo $class_array[$i][$j]->subject_code;?></td>
 										<td><?php echo $class_array[$i][$j]->subject_name;?></td>
 										<td><?php echo $class_array[$i][$j]->firstname.' '.$class_array[$i][$j]->lastname;?></td>
+										<td><?php echo $class_array[$i][$j]->lec_count;?></td>
+										<td><?php echo $class_array[$i][$j]->lab_count;?></td>
 										<td><?php echo $class_array[$i][$j]->units;?></td>
 										<td><?php echo $class_array[$i][$j]->room_name;?></td>
 										<td><?php echo strtoupper(substr($class_array[$i][$j]->week,0,3)) .' ' .$class_array[$i][$j]->time_start .' - '. $class_array[$i][$j]->time_end?> </td>
@@ -115,19 +123,56 @@
 					</tr>
 				</thead>
 				<tbody>
-					<?php foreach ($fails as $class) { ?>
-					<tr>
-						<td><input type="checkbox" class="styled" name="failed_class_id[]" value="<?php echo $class->id?>"></td>
-						<td><?php echo $class->subject_code;?></td>
-						<td><?php echo $class->subject_name;?></td>
-						<td><?php echo $class->firstname.' '.$class->lastname;?></td>
-						<td><?php echo $class->lec_count;?></td>
-						<td><?php echo $class->lab_count;?></td>
-						<td><?php echo $class->units;?></td>
-						<td><?php echo $class->room_name;?></td>
-						<td><?php echo strtoupper(substr($class->week,0,3)) .' ' .$class->time_start .' - '. $class->time_end?> </td>
-					</tr>
-					<?php } ?>
+					<?php foreach ($fails as $class) {
+						if ($class->semester_id == $semester_id){ ?>
+							<tr>
+								<td>
+									<input type="checkbox" class="styled" name="failed_class_id[]" value="<?php echo $class->id?>">
+								</td>
+								<td><?php echo $class->subject_code;?></td>
+								<td><?php echo $class->subject_name;?></td>
+								<td><?php echo $class->firstname.' '.$class->lastname;?></td>
+								<td><?php echo $class->lec_count;?></td>
+								<td><?php echo $class->lab_count;?></td>
+								<td><?php echo $class->units;?></td>
+								<td><?php echo $class->room_name;?></td>
+								<td><?php echo strtoupper(substr($class->week,0,3)) .' ' .$class->time_start .' - '. $class->time_end?> </td>
+							</tr>
+							<?php
+						}
+					}
+					if (count($fails_array) != 0)
+					{
+						for ($i = 0; $i < count($fails_array); $i++)
+						{
+							for ($j = 0; $j < count($fails_array[$i]); $j++)
+							{
+								if (!empty($fails_array[$i][$j]))
+								{ ?>
+									<tr>
+										<td>
+											<?php
+											if ($stud_status == 2){}
+											elseif (array_search($fails_array[$i][$j]->subject_id, $conflict) === false) { ?>
+												<input type="checkbox" class="styled" name="class_id[]" value="<?php echo $fails_array[$i][0]->id?>">
+											<?php } else { ?>
+												<i class="icon-x"></i>
+											<?php } ?>
+										</td>
+										<td><?php echo $fails_array[$i][$j]->subject_code;?></td>
+										<td><?php echo $fails_array[$i][$j]->subject_name;?></td>
+										<td><?php echo $fails_array[$i][$j]->firstname.' '.$fails_array[$i][$j]->lastname;?></td>
+										<td><?php echo $fails_array[$i][$j]->lec_count;?></td>
+										<td><?php echo $fails_array[$i][$j]->lab_count;?></td>
+										<td><?php echo $fails_array[$i][$j]->units;?></td>
+										<td><?php echo $fails_array[$i][$j]->room_name;?></td>
+										<td><?php echo strtoupper(substr($fails_array[$i][$j]->week,0,3)) .' ' .$fails_array[$i][$j]->time_start .' - '. $fails_array[$i][$j]->time_end?> </td>
+									</tr>
+									<?php
+								}
+							}
+						}
+					} ?>
 				</tbody>
 			</table>
 			<hr>

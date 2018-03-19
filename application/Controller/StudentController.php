@@ -58,10 +58,14 @@ class StudentController
 			$fails = $Schedule->getFailedSchedule($_SESSION["id"]);
 
 			$failed_subjects = array();
+			$fails_array = array();
 			foreach ($fails as $schedule)
 			{
+				$fails_array[] = $Class->getOtherClassesBySubject($schedule->class_id,$schedule->subject_id,$semester_id);
 				$failed_subjects[] = $schedule->subject_id;
 			}
+
+			# get other schedules for failed subjects
 
 			# get all new subjects
 			$pre_subjects = array();
@@ -86,8 +90,10 @@ class StudentController
 			}
 
 			# get all subjects of different courses and time
+			$class_array = array();
 			foreach ($classes as $class)
 			{
+				# other schedule
 				$class_array[] = $Class->getOtherClassesBySubject($class->id,$class->subject_id,$semester_id);
 			}
 
