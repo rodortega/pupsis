@@ -26,7 +26,7 @@ $(document).ready(function(){
 	        {
 	        	if (response.status == "success")
 	        	{
-	        		window.location.href = url + "registrar/vacancy";
+	        		window.location.href = url + "registrar/dashboard";
 	        	}
 	        	else
 	        	{

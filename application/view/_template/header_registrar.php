@@ -81,7 +81,7 @@
 					<div class="sidebar-category sidebar-category-visible">
 						<div class="category-content no-padding">
 							<ul class="navigation navigation-main navigation-accordion">
-
+								<li class="menu_dashboard"><a href="<?php echo URL?>registrar/dashboard"><i class="icon-home7"></i> <span>Dashboard</span></a></li>
 								<li class="menu_room"><a href="<?php echo URL?>registrar/rooms"><i class="icon-home8"></i> <span>Rooms</span></a></li>
 
 								<li class="menu_professor menu_professor_add">

@@ -81,6 +81,7 @@
 					<div class="sidebar-category sidebar-category-visible">
 						<div class="category-content no-padding">
 							<ul class="navigation navigation-main navigation-accordion">
+								<li class="menu_dashboard"><a href="<?php echo URL?>student/dashboard"><i class="icon-home7"></i> <span>Dashboard</span></a></li>
 								<li class="menu_enrollment"><a href="<?php echo URL?>student/enrollment"><i class="icon-reading"></i> <span>Enrollment</span></a></li>
 								<li class="menu_grade"><a href="<?php echo URL?>student/grades"><i class="icon-pen2"></i> <span>Grades</span></a></li>
 								<li class="menu_schedule"><a href="<?php echo URL?>student/schedule"><i class="icon-calendar"></i> <span>Schedule</span></a></li>

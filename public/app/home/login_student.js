@@ -26,7 +26,7 @@ $(document).ready(function(){
 	        {
 	        	if (response.status == "success")
 	        	{
-	        		window.location.href = url + "student/schedule";
+	        		window.location.href = url + "student/dashboard";
 	        	}
 	        	else
 	        	{

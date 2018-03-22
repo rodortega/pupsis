@@ -27,19 +27,13 @@ class RegistrarController
 
 	public function dashboard()
 	{
-		/*
 		require VIEW . 'registrar/session.php';
 
 		$page_title = "Dashboard";
 
-		$Registrar = new Registrar();
-		$registrars = $Registrar->getProfileById($_SESSION['id']);
-
 		require VIEW . '_template/header_registrar.php';
 		require VIEW . 'registrar/dashboard.php';
 		require VIEW . '_template/footer.php';
-		*/
-		header('location:' . URL . 'registrar/professor');
 	}
 
 	public function rooms()
