@@ -11,6 +11,15 @@ use Mini\Libs\JSON;
 
 class StudentController
 {
+	public function index()
+	{
+		$page_title = "Student Login";
+
+		require VIEW . '_template/header_guest.php';
+		require VIEW . 'home/login_student.php';
+		require VIEW . '_template/footer.php';
+	}
+
 	public function dashboard()
 	{
 		require VIEW . 'student/session.php';

@@ -32,6 +32,6 @@ class LogoutController
 		session_start();
 		session_destroy();
 
-		header("location: " . URL);
+		header("location: " . URL . "student");
 	}
 }
